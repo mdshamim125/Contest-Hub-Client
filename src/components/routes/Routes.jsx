@@ -5,6 +5,7 @@ import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import Login from "../../pages/Login/Login";
 import SignUp from "../../pages/SignUp/SignUp";
 import AllContests from './../../pages/All-Contests/AllContests';
+import PopularDetails from './../home/popularContest/PopularDetails';
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/popular/:id",
+        element: <PopularDetails></PopularDetails>,
       },
       {
         path: "all-contests",
