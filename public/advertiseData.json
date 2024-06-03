@@ -1,0 +1,65 @@
+[
+  {
+    "contestWinner": {
+      "name": "Alice Smith",
+      "prize": "1500 USD",
+      "image": "https://example.com/contest_winner1.jpg"
+    },
+    "contestParticipants": 700,
+    "totalContestWinners": 1200,
+    "text": {
+      "title": "Join Our Contest and Win Big!",
+      "description": "Participate in our exciting contest for a chance to win amazing prizes!",
+      "howToParticipate": "To participate, simply follow the instructions on our website.",
+      "termsAndConditions": "Terms and conditions apply. Please read them carefully before participating."
+    },
+    "images": {
+      "banner": "https://example.com/contest_banner1.jpg",
+      "prize": "https://example.com/prize_image1.jpg",
+      "participants": "https://example.com/participants_image1.jpg",
+      "totalWinners": "https://example.com/total_winners_image1.jpg"
+    }
+  },
+  {
+    "contestWinner": {
+      "name": "Emily Johnson",
+      "prize": "2000 USD",
+      "image": "https://example.com/contest_winner2.jpg"
+    },
+    "contestParticipants": 800,
+    "totalContestWinners": 1500,
+    "text": {
+      "title": "Join Our Contest and Win Big!",
+      "description": "Participate in our exciting contest for a chance to win amazing prizes!",
+      "howToParticipate": "To participate, simply follow the instructions on our website.",
+      "termsAndConditions": "Terms and conditions apply. Please read them carefully before participating."
+    },
+    "images": {
+      "banner": "https://example.com/contest_banner2.jpg",
+      "prize": "https://example.com/prize_image2.jpg",
+      "participants": "https://example.com/participants_image2.jpg",
+      "totalWinners": "https://example.com/total_winners_image2.jpg"
+    }
+  },
+  {
+    "contestWinner": {
+      "name": "Michael Brown",
+      "prize": "1200 USD",
+      "image": "https://example.com/contest_winner3.jpg"
+    },
+    "contestParticipants": 600,
+    "totalContestWinners": 1100,
+    "text": {
+      "title": "Join Our Contest and Win Big!",
+      "description": "Participate in our exciting contest for a chance to win amazing prizes!",
+      "howToParticipate": "To participate, simply follow the instructions on our website.",
+      "termsAndConditions": "Terms and conditions apply. Please read them carefully before participating."
+    },
+    "images": {
+      "banner": "https://example.com/contest_banner3.jpg",
+      "prize": "https://example.com/prize_image3.jpg",
+      "participants": "https://example.com/participants_image3.jpg",
+      "totalWinners": "https://example.com/total_winners_image3.jpg"
+    }
+  }
+]
