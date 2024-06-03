@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Best Design Contest",
+    "image": "https://example.com/contest/design.jpg",
+    "attemptedCount": 15,
+    "shortDescription": "A contest to find the best design in various categories.",
+    "detailsUrl": "/contest/1/details"
+  },
+  {
+    "name": "Coding Challenge",
+    "image": "https://example.com/contest/coding.jpg",
+    "attemptedCount": 12,
+    "shortDescription": "Test your coding skills in this exciting challenge.",
+    "detailsUrl": "/contest/2/details"
+  },
+  {
+    "name": "Marketing Strategy Contest",
+    "image": "https://example.com/contest/marketing.jpg",
+    "attemptedCount": 10,
+    "shortDescription": "Showcase your best marketing strategies to win big.",
+    "detailsUrl": "/contest/3/details"
+  },
+  {
+    "name": "Digital Advertisement Contest",
+    "image": "https://example.com/contest/digital_ad.jpg",
+    "attemptedCount": 8,
+    "shortDescription": "Create innovative digital advertisements to impress the judges.",
+    "detailsUrl": "/contest/4/details"
+  },
+  {
+    "name": "Gaming Review Contest",
+    "image": "https://example.com/contest/gaming_review.jpg",
+    "attemptedCount": 7,
+    "shortDescription": "Review the latest games and win exciting prizes.",
+    "detailsUrl": "/contest/5/details"
+  },
+
+  {
+    "name": "Article Writing Contest",
+    "image": "https://example.com/contest/article_writing.jpg",
+    "attemptedCount": 20,
+    "shortDescription": "Express your creativity through words in our Article Writing Contest.",
+    "detailsUrl": "/contest/6/details"
+  },
+  {
+    "name": "Photography Contest",
+    "image": "https://example.com/contest/photography.jpg",
+    "attemptedCount": 18,
+    "shortDescription": "Capture stunning moments and showcase your photography skills.",
+    "detailsUrl": "/contest/7/details"
+  },
+  {
+    "name": "Music Composition Contest",
+    "image": "https://example.com/contest/music_composition.jpg",
+    "attemptedCount": 16,
+    "shortDescription": "Compose your own music and stand a chance to win amazing prizes.",
+    "detailsUrl": "/contest/8/details"
+  },
+  {
+    "name": "Business Idea Contest",
+    "image": "https://example.com/contest/business_idea.jpg",
+    "attemptedCount": 14,
+    "shortDescription": "Pitch your innovative business ideas and attract potential investors.",
+    "detailsUrl": "/contest/9/details"
+  }
+]
