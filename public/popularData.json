@@ -1,56 +1,56 @@
 [
   {
     "name": "Best Design Contest",
-    "image": "https://example.com/contest/design.jpg",
+    "image": "https://i.ibb.co/JFfLNcW/pexels-n-voitkevich-6532370.jpg",
     "attemptedCount": 15,
     "shortDescription": "A contest to find the best design in various categories."
   },
   {
     "name": "Coding Challenge",
-    "image": "https://example.com/contest/coding.jpg",
+    "image": "https://i.ibb.co/m5pfrqY/pexels-olia-danilevich-4974915.jpg",
     "attemptedCount": 12,
     "shortDescription": "Test your coding skills in this exciting challenge."
   },
   {
     "name": "Marketing Strategy Contest",
-    "image": "https://example.com/contest/marketing.jpg",
+    "image": "https://i.ibb.co/KxKGfpb/pexels-mikael-blomkvist-6476589.jpg",
     "attemptedCount": 10,
     "shortDescription": "Showcase your best marketing strategies to win big."
   },
   {
     "name": "Digital Advertisement Contest",
-    "image": "https://example.com/contest/digital_ad.jpg",
+    "image": "https://i.ibb.co/cyBDZsB/pexels-mikael-blomkvist-6476584.jpg",
     "attemptedCount": 8,
     "shortDescription": "Create innovative digital advertisements to impress the judges."
   },
   {
     "name": "Gaming Review Contest",
-    "image": "https://example.com/contest/gaming_review.jpg",
+    "image": "https://i.ibb.co/C0hXcH7/pexels-william-fortunato-6140940.jpg",
     "attemptedCount": 7,
     "shortDescription": "Review the latest games and win exciting prizes."
   },
 
   {
     "name": "Article Writing Contest",
-    "image": "https://example.com/contest/article_writing.jpg",
+    "image": "https://i.ibb.co/pjHmSBb/pexels-ketut-subiyanto-4559592.jpg",
     "attemptedCount": 20,
     "shortDescription": "Express your creativity through words in our Article Writing Contest."
   },
   {
     "name": "Photography Contest",
-    "image": "https://example.com/contest/photography.jpg",
+    "image": "https://i.ibb.co/k2MsKnv/pexels-burakbasgoze-20426442.jpg",
     "attemptedCount": 18,
     "shortDescription": "Capture stunning moments and showcase your photography skills."
   },
   {
     "name": "Music Composition Contest",
-    "image": "https://example.com/contest/music_composition.jpg",
+    "image": "https://i.ibb.co/6JQ8Xz9/pexels-matthiasgroeneveld-4200745.jpg",
     "attemptedCount": 16,
     "shortDescription": "Compose your own music and stand a chance to win amazing prizes."
   },
   {
     "name": "Business Idea Contest",
-    "image": "https://example.com/contest/business_idea.jpg",
+    "image": "https://i.ibb.co/xG4Phty/pexels-olly-3760371.jpg",
     "attemptedCount": 14,
     "shortDescription": "Pitch your innovative business ideas and attract potential investors."
   }

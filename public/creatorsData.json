@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Bob Smith",
+    "image": "https://i.ibb.co/bm3597V/IMG-4539.jpg",
+    "contestName": "Winter Photography Contest",
+    "contestDescription": "Capture the beauty of winter in this photography contest.",
+    "participateCount": 200
+  },
+  {
+    "name": "Charlie Brown",
+    "image": "https://i.ibb.co/xHbcdjv/283942266-789555312010878-102306572249086497-n.jpg",
+    "contestName": "Spring Poetry Contest",
+    "contestDescription": "Write and share your best spring-themed poems.",
+    "participateCount": 180
+  },
+  {
+    "name": "Daisy Miller",
+    "image": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+    "contestName": "Autumn Cooking Contest",
+    "contestDescription": "Show off your best autumn recipes in this cooking contest.",
+    "participateCount": 220
+  }
+]

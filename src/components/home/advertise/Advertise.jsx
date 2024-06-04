@@ -14,7 +14,7 @@ const Advertise = () => {
     },
   });
 
-  console.log(advertise);
+  // console.log(advertise);
 
   if (isLoading) return <p>Loading...</p>;
   return (

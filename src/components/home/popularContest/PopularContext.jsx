@@ -19,14 +19,14 @@ const PopularContests = () => {
 
   return (
     <div className="container mx-auto px-6 py-16">
-      <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
+      <h2 className="text-3xl text-center font-bold text-gray-800 dark:text-white">
         Popular Contests
       </h2>
       <div className="grid gap-6 mt-8 lg:grid-cols-3">
         {popular.slice(0,6).map((contest) => (
           <div
             key={contest.id}
-            className="max-w-sm mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden"
+            className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden"
           >
             <img
               className="w-full h-48 object-cover"
@@ -47,7 +47,7 @@ const PopularContests = () => {
                 to={`/popular/${contest._id}`}
                 className="mt-4 inline-block  text-center text-blue-500 hover:underline"
               >
-                <button className="btn btn-primary">Details</button>
+                <button className="btn font-bold text-lg btn-primary">Details</button>
               </Link>
             </div>
           </div>
