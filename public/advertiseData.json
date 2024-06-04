@@ -3,7 +3,7 @@
     "contestWinner": {
       "name": "Alice Smith",
       "prize": "1500 USD",
-      "image": "https://example.com/contest_winner1.jpg"
+      "image": "https://i.ibb.co/bm3597V/IMG-4539.jpg"
     },
     "contestParticipants": 700,
     "totalContestWinners": 1200,
@@ -24,7 +24,7 @@
     "contestWinner": {
       "name": "Emily Johnson",
       "prize": "2000 USD",
-      "image": "https://example.com/contest_winner2.jpg"
+      "image": "https://i.ibb.co/xHbcdjv/283942266-789555312010878-102306572249086497-n.jpg"
     },
     "contestParticipants": 800,
     "totalContestWinners": 1500,
@@ -45,7 +45,7 @@
     "contestWinner": {
       "name": "Michael Brown",
       "prize": "1200 USD",
-      "image": "https://example.com/contest_winner3.jpg"
+      "image": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
     },
     "contestParticipants": 600,
     "totalContestWinners": 1100,

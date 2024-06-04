@@ -18,10 +18,16 @@ const Advertise = () => {
 
   if (isLoading) return <p>Loading...</p>;
   return (
-    <div className="flex justify-around gap-6">
+
+    <div>
+      <div className="text-center font-bold text-3xl my-12">
+        <h1>Contest Winners</h1>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-around gap-6 item-center">
       {advertise.map((advertise) => (
         <AdvertiseCard advertise={advertise}></AdvertiseCard>
       ))}
+    </div>
     </div>
   );
 };
