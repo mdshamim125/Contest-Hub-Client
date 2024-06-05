@@ -4,8 +4,17 @@ import Home from "./../../pages/Home/Home";
 import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import Login from "../../pages/Login/Login";
 import SignUp from "../../pages/SignUp/SignUp";
-import AllContests from './../../pages/All-Contests/AllContests';
-import PopularDetails from './../home/popularContest/PopularDetails';
+import AllContests from "./../../pages/All-Contests/AllContests";
+import PopularDetails from "./../home/popularContest/PopularDetails";
+import DashboardLayouts from "../layouts/DashboardLayouts";
+import MyParticipatedContest from "./../../pages/Dashboard/User/MyParticipatedContest";
+import MyWinningContest from "./../../pages/Dashboard/User/MyWinningContest";
+import MyProfile from "./../../pages/Dashboard/User/MyProfile";
+import AddContest from "./../../pages/Dashboard/Creator/AddContest";
+import MyCreatedContest from "./../../pages/Dashboard/Creator/MyCreatedContest";
+import ContestSubmitted from "./../../pages/Dashboard/Creator/ContestSubmitted";
+import ManageUser from "./../../pages/Dashboard/Admin/ManageUser";
+import ManageContests from "./../../pages/Dashboard/Admin/ManageContests";
 
 export const router = createBrowserRouter([
   {
@@ -29,4 +38,46 @@ export const router = createBrowserRouter([
   },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <SignUp></SignUp> },
+
+  {
+    path: "/dashboard",
+    element: <DashboardLayouts />,
+    children: [
+      // user path
+      {
+        path: "my-participated-contest",
+        element: <MyParticipatedContest></MyParticipatedContest>,
+      },
+      {
+        path: "my-winning-contest",
+        element: <MyWinningContest></MyWinningContest>,
+      },
+      {
+        path: "my-profile",
+        element: <MyProfile></MyProfile>,
+      },
+      // creator path
+      {
+        path: "add-contest",
+        element: <AddContest></AddContest>,
+      },
+      {
+        path: "my-created-contest",
+        element: <MyCreatedContest></MyCreatedContest>,
+      },
+      {
+        path: "contest-submitted",
+        element: <ContestSubmitted></ContestSubmitted>,
+      },
+      // admin path
+      {
+        path: "manage-user",
+        element: <ManageUser></ManageUser>,
+      },
+      {
+        path: "manage-contests",
+        element: <ManageContests></ManageContests>,
+      },
+    ],
+  },
 ]);
