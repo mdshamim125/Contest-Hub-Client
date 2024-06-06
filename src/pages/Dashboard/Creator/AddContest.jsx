@@ -50,9 +50,9 @@ const AddContest = () => {
     setLoading(true);
 
     try {
-      const image = e.target.image.files[0]; 
+      const image = e.target.image.files[0];
 
-      const host = {
+      const creator = {
         name: user?.displayName,
         image: user?.photoURL,
         email: user?.email,
@@ -71,8 +71,9 @@ const AddContest = () => {
         taskSubmission,
         category: selectedTag,
         deadline,
-        host,
+        creator,
         image: image_url,
+        status: "pending",
       };
       console.log(contestData);
       await mutateAsync(contestData);
