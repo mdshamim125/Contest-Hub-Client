@@ -15,6 +15,7 @@ import MyCreatedContest from "./../../pages/Dashboard/Creator/MyCreatedContest";
 import ContestSubmitted from "./../../pages/Dashboard/Creator/ContestSubmitted";
 import ManageUser from "./../../pages/Dashboard/Admin/ManageUser";
 import ManageContests from "./../../pages/Dashboard/Admin/ManageContests";
+import ContestEdit from './../../pages/Dashboard/Creator/ContestEdit';
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
       {
         path: "contest-submitted",
         element: <ContestSubmitted></ContestSubmitted>,
+      },
+      {
+        path: "contest-edit/:id",
+        element: <ContestEdit></ContestEdit>,
       },
       // admin path
       {

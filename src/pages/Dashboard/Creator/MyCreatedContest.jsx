@@ -73,6 +73,10 @@ const MyCreatedContest = () => {
     navigate(`/dashboard/contest-submitted`);
   };
 
+  const handleEdit=(contestId)=>{
+    navigate(`/dashboard/contest-edit/${contestId}`);
+  }
+
   return (
     <>
       <Helmet>
@@ -98,7 +102,7 @@ const MyCreatedContest = () => {
                     {contest.status === "pending" && (
                       <>
                         <button
-                          onClick={() => handleEdit(contest.id)}
+                          onClick={() => handleEdit(contest._id)}
                           className="text-blue-500 hover:text-blue-700"
                         >
                           <FiEdit />
@@ -118,7 +122,7 @@ const MyCreatedContest = () => {
                       </span>
                     )}
                     <button
-                      onClick={() => handleViewSubmissions(contest.id)}
+                      onClick={() => handleViewSubmissions(contest._id)}
                       className="text-green-500 hover:text-green-700"
                     >
                       <FiEye />
