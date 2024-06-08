@@ -5,14 +5,14 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { imageUpload } from "../../../api/utils";
 import EditContestForm from "../../../components/form/EditContestForm";
-import useAxiosPublic from "../../../components/hooks/useAxiosPublic";
 import useAuth from "../../../components/hooks/useAuth";
+import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 
 const ContestEdit = () => {
   const { id } = useParams();
   console.log(id);
   const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure=useAxiosSecure()
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
 
@@ -29,7 +29,7 @@ const ContestEdit = () => {
   } = useQuery({
     queryKey: ["contest"],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/contest/${id}`);
+      const { data } = await axiosSecure.get(`/contest/${id}`);
 
       return data;
     },
@@ -56,7 +56,7 @@ const ContestEdit = () => {
 
   const { mutateAsync } = useMutation({
     mutationFn: async (contestData) => {
-      const { data } = await axiosPublic.put(
+      const { data } = await axiosSecure.put(
         `/contest/update/${id}`,
         contestData
       );

@@ -3,14 +3,14 @@ import { Helmet } from "react-helmet-async";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import useAxiosPublic from "../../../components/hooks/useAxiosPublic";
 import useAuth from "../../../components/hooks/useAuth";
 import AddContestForm from "../../../components/form/AddContestForm";
 import { imageUpload } from "../../../api/utils";
+import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 
 const AddContest = () => {
   const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const [imagePreview, setImagePreview] = useState();
@@ -35,7 +35,7 @@ const AddContest = () => {
 
   const { mutateAsync } = useMutation({
     mutationFn: async (contestData) => {
-      const { data } = await axiosPublic.post(`/contests`, contestData);
+      const { data } = await axiosSecure.post(`/contests`, contestData);
       return data;
     },
     onSuccess: () => {

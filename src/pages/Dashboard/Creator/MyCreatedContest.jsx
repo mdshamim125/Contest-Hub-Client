@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import useAxiosPublic from "../../../components/hooks/useAxiosPublic";
 import useAuth from "../../../components/hooks/useAuth";
 import toast from "react-hot-toast";
 import { FiEdit, FiTrash2, FiEye } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 
 const MyCreatedContest = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   //   Fetch Rooms Data
   const {
@@ -20,7 +20,7 @@ const MyCreatedContest = () => {
   } = useQuery({
     queryKey: ["contests", user?.email],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/contests/user/${user?.email}`);
+      const { data } = await axiosSecure.get(`/contests/user/${user?.email}`);
 
       return data;
     },
@@ -29,7 +29,7 @@ const MyCreatedContest = () => {
   //   delete
   const { mutateAsync } = useMutation({
     mutationFn: async (id) => {
-      const { data } = await axiosPublic.delete(`/contests/${id}`);
+      const { data } = await axiosSecure.delete(`/contests/${id}`);
       return data;
     },
     onSuccess: (data) => {
@@ -73,9 +73,9 @@ const MyCreatedContest = () => {
     navigate(`/dashboard/contest-submitted`);
   };
 
-  const handleEdit=(contestId)=>{
+  const handleEdit = (contestId) => {
     navigate(`/dashboard/contest-edit/${contestId}`);
-  }
+  };
 
   return (
     <>
