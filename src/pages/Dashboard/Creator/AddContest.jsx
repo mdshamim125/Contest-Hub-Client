@@ -7,6 +7,7 @@ import useAuth from "../../../components/hooks/useAuth";
 import AddContestForm from "../../../components/form/AddContestForm";
 import { imageUpload } from "../../../api/utils";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
+import useRole from "../../../components/hooks/useRole";
 
 const AddContest = () => {
   const navigate = useNavigate();
@@ -41,6 +42,16 @@ const AddContest = () => {
     onSuccess: () => {
       toast.success("Contest Added Successfully!");
       navigate("/dashboard/my-created-contest");
+      setLoading(false);
+    },
+    onError: (error) => {
+      if (error.response?.status === 401) {
+        toast.error(
+          error.response.data.message || "You are blocked by the admin panel"
+        );
+      } else {
+        toast.error("Failed to add contest");
+      }
       setLoading(false);
     },
   });
