@@ -7,7 +7,6 @@ import useAuth from "../../../components/hooks/useAuth";
 import AddContestForm from "../../../components/form/AddContestForm";
 import { imageUpload } from "../../../api/utils";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
-import useRole from "../../../components/hooks/useRole";
 
 const AddContest = () => {
   const navigate = useNavigate();

@@ -99,22 +99,20 @@ const MyCreatedContest = () => {
                   <td className="py-2 px-4 border-b">{contest.contestName}</td>
                   <td className="py-2 px-4 border-b">{contest.status}</td>
                   <td className="py-2 px-4 border-b space-x-2">
-                    {contest?.status === "pending" && (
-                      <>
-                        <button
-                          onClick={() => handleEdit(contest._id)}
-                          className="text-blue-500 hover:text-blue-700"
-                        >
-                          <FiEdit />
-                        </button>
-                        <button
-                          onClick={() => handleDelete(contest._id)}
-                          className="text-red-500 hover:text-red-700"
-                        >
-                          <FiTrash2 />
-                        </button>
-                      </>
-                    )}
+                    <button
+                      disabled={contest?.status !== "pending"}
+                      onClick={() => handleEdit(contest._id)}
+                      className="text-blue-500 hover:text-blue-700"
+                    >
+                      <FiEdit />
+                    </button>
+                    <button
+                      disabled={contest?.status !== "pending"}
+                      onClick={() => handleDelete(contest._id)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <FiTrash2 />
+                    </button>
 
                     <button
                       onClick={() => handleViewSubmissions(contest._id)}
