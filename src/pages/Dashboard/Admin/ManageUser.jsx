@@ -17,7 +17,7 @@ const ManageUser = () => {
     },
   });
 
-  console.log(users);
+  // console.log(users);
   if (isLoading) return <p>loading...</p>;
   return (
     <>

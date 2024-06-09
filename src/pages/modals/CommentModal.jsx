@@ -5,7 +5,7 @@ import useAxiosSecure from "../../components/hooks/useAxiosSecure";
 const CommentModal = ({ contest, closeModal, refetch }) => {
   const [comment, setComment] = useState("");
   const axiosSecure = useAxiosSecure();
-console.log(contest);
+// console.log(contest);
   const handleCommentSubmit = async () => {
     try {
       await axiosSecure.post(`/contests/comment/${contest}`, { comment });

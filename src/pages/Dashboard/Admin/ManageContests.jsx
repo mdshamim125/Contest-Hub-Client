@@ -16,11 +16,12 @@ const ManageContests = () => {
     },
   });
 
-  console.log(contests);
+  //   console.log(contests);
 
   const { mutateAsync } = useMutation({
     mutationFn: async (id) => {
       await axiosSecure.delete(`/contests/${id}`);
+      refetch();
     },
     onSuccess: () => {
       toast.success("Contest deleted successfully!");
@@ -31,6 +32,7 @@ const ManageContests = () => {
   const { mutateAsync: confirmation } = useMutation({
     mutationFn: async (id) => {
       await axiosSecure.patch(`/contests/confirm/${id}`);
+      refetch();
     },
     onSuccess: () => {
       toast.success("Contest confirmed successfully!");
@@ -48,7 +50,7 @@ const ManageContests = () => {
 
   //  Handle Delete
   const handleDelete = async (id) => {
-    console.log(id);
+    // console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -61,6 +63,7 @@ const ManageContests = () => {
       if (result.isConfirmed) {
         try {
           mutateAsync(id);
+          refetch();
           if (deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
@@ -70,7 +73,7 @@ const ManageContests = () => {
             // toast.success("deleted successfully");
           }
         } catch (err) {
-          console.log(err);
+          //   console.log(err);
         }
       }
     });
@@ -78,6 +81,7 @@ const ManageContests = () => {
 
   const handleConfirmContest = async (id) => {
     await confirmation(id);
+    refetch();
   };
 
   return (

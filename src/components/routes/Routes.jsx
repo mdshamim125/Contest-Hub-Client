@@ -15,7 +15,9 @@ import MyCreatedContest from "./../../pages/Dashboard/Creator/MyCreatedContest";
 import ContestSubmitted from "./../../pages/Dashboard/Creator/ContestSubmitted";
 import ManageUser from "./../../pages/Dashboard/Admin/ManageUser";
 import ManageContests from "./../../pages/Dashboard/Admin/ManageContests";
-import ContestEdit from './../../pages/Dashboard/Creator/ContestEdit';
+import ContestEdit from "./../../pages/Dashboard/Creator/ContestEdit";
+import ContestDetails from "../../pages/All-Contests/ContestDetails";
+import Payment from "../../pages/All-Contests/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ export const router = createBrowserRouter([
       {
         path: "all-contests",
         element: <AllContests></AllContests>,
+      },
+      {
+        path: "/all-contests/:id",
+        element: <ContestDetails></ContestDetails>
+      },
+      {
+        path: "/payment/:id",
+        element: <Payment></Payment>
       },
     ],
   },

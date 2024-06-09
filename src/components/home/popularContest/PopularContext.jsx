@@ -13,7 +13,7 @@ const PopularContests = () => {
     },
   });
 
-  console.log(popular);
+  // console.log(popular);
 
   if (isLoading) return <p>Loading...</p>;
 

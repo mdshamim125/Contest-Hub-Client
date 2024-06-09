@@ -33,14 +33,14 @@ const MyCreatedContest = () => {
       return data;
     },
     onSuccess: (data) => {
-      console.log(data);
+      // console.log(data);
       refetch();
     },
   });
 
   //  Handle Delete
   const handleDelete = async (id) => {
-    console.log(id);
+    // console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -62,7 +62,7 @@ const MyCreatedContest = () => {
             // toast.success("deleted successfully");
           }
         } catch (err) {
-          console.log(err);
+          // console.log(err);
         }
       }
     });

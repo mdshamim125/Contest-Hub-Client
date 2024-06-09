@@ -85,7 +85,7 @@ const AddContest = () => {
         image: image_url,
         status: "pending",
       };
-      console.log(contestData);
+      // console.log(contestData);
       await mutateAsync(contestData);
     } catch (err) {
       toast.error(err.message);

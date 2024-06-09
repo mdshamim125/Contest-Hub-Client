@@ -8,8 +8,8 @@ const AdvertiseCard = ({ advertise }) => {
     text,
     images,
   } = advertise;
-  console.log(advertise);
-  console.log(contestParticipants);
+  // console.log(advertise);
+  // console.log(contestParticipants);
 
   return (
     // <section className="contest-section">

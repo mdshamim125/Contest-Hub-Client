@@ -10,7 +10,7 @@ import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 
 const ContestEdit = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const navigate = useNavigate();
   const axiosSecure=useAxiosSecure()
   const [loading, setLoading] = useState(false);
@@ -35,7 +35,7 @@ const ContestEdit = () => {
     },
   });
 
-  console.log(contest);
+  // console.log(contest);
 
   const [contestName, setContestName] = useState(`${contest?.contestName}`);
   const [description, setDescription] = useState(`${contest?.description}`);
@@ -73,7 +73,7 @@ const ContestEdit = () => {
     e.preventDefault();
     setLoading(true);
 
-    console.log("hi");
+    // console.log("hi");
 
     try {
       const image = e.target.image.files[0];
@@ -84,7 +84,7 @@ const ContestEdit = () => {
         email: user?.email,
       };
 
-      console.log(image, creator);
+      // console.log(image, creator);
 
       let image_url = "";
       if (image) {
@@ -103,7 +103,7 @@ const ContestEdit = () => {
         image: image_url,
         status: "pending",
       };
-      console.log(contestData);
+      // console.log(contestData);
       await mutateAsync(contestData);
     } catch (err) {
       toast.error(err.message);

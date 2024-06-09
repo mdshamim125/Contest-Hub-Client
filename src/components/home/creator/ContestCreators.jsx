@@ -23,7 +23,7 @@ const ContestCreators = () => {
     },
   });
 
-  console.log(creators);
+  // console.log(creators);
 
   if (isLoading) return <p>Loading...</p>;
   return (
