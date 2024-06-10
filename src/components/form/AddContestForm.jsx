@@ -193,7 +193,7 @@ const AddContestForm = ({
         </div>
 
         <button
-          disabled={loading || loggedInUser?.status==="Blocked"}
+          disabled={loading || loggedInUser?.status === "Blocked"}
           type="submit"
           className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500"
         >

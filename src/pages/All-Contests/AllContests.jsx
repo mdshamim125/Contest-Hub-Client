@@ -35,7 +35,7 @@ const AllContests = () => {
             />
             <div className="card-body">
               <h2 className="card-title">{contest.contestName}</h2>
-              <p>Participants: {contest.participantsCount}</p>
+              <p>Participants: {contest.participantsCount || 0}</p>
               <p>{contest.description.slice(0, 100)}...</p>
               <Link to={`/all-contests/${contest._id}`} className="btn font-bold btn-primary">
                 Details

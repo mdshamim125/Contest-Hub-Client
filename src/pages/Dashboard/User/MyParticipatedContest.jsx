@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Countdown from "react-countdown";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import useAuth from "../../../components/hooks/useAuth";
@@ -9,6 +9,7 @@ const MyParticipatedContest = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [contests, setContests] = useState([]);
+  const navigate = useNavigate()
 
   const fetchParticipatedContests = async () => {
     const { data } = await axiosSecure.get(
@@ -30,17 +31,12 @@ const MyParticipatedContest = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div
-          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-500"
-          role="status"
-        >
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
+      <p1>loading...</p1>
     );
   }
-
+ const handleGoing=()=>{
+    navigate(`/all-contests`)
+ }
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-semibold mb-6">My Participated Contests</h1>
@@ -86,6 +82,7 @@ const MyParticipatedContest = () => {
           </tbody>
         </table>
       </div>
+      <button onClick={handleGoing}  className="btn text-center text-large w-full mt-4">Participate More</button>
     </div>
   );
 };

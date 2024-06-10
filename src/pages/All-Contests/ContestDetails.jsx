@@ -48,6 +48,10 @@ const ContestDetails = () => {
         className="w-full h-[400px] object-cover mb-4"
       />
       <p className="text-lg text-gray-600">{contest.description}</p>
+      <p className="text-medium text-gray-600">
+        <span className="font-medium my-">Task: </span>
+        {contest.taskSubmission}
+      </p>
       <div className="font-medium my-2">
         <p>Contest Price: ${contest.price}</p>
         <p>Participants: {participantsCount}</p>

@@ -32,7 +32,7 @@ const Payment = () => {
 
   return (
     <div>
-      <h1>Payment for Contest: {contest.name}</h1>
+      <h1 className="text-2xl font-medium text-center mt-12 mb-6">Pay For {contest.contestName}</h1>
       <Elements stripe={stripePromise}>
         <CheckoutForm contestPrice={contest.price} contest={contest} />
       </Elements>

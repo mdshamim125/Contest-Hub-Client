@@ -1,13 +1,8 @@
 import React from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// Import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
@@ -23,14 +18,11 @@ const ContestCreators = () => {
     },
   });
 
-  // console.log(creators);
-
   if (isLoading) return <p>Loading...</p>;
+
   return (
-    <section className="contest-creators-section">
-      <h2 className="text-3xl font-bold text-center mt-16 my-8">
-        Top Contest Creators
-      </h2>
+    <section className="contest-creators-section py-16">
+      <h2 className="text-3xl font-bold text-center">Top Contest Creators</h2>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -45,26 +37,30 @@ const ContestCreators = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        {creators.map((creator, index) => (
-          <SwiperSlide key={index}>
+        {creators.map((creator) => (
+          <SwiperSlide key={creator._id}>
             <div className="creator-card bg-white rounded-lg shadow-lg p-6">
-              <div className="flex justify-between items-center">
+              <div className="flex flex-col md:flex-row justify-evenly items-center">
                 <img
-                  className="object-cover w-2/3 h-[550px] rounded-t-lg"
-                  src={creator.image}
-                  alt={creator.name}
+                  className="object-cover w-full md:w-1/3 h-48 md:h-96 rounded-t-lg md:rounded-lg"
+                  src={creator.creatorImage}
+                  alt={creator.creatorName}
                 />
-                <div className="creator-info p-4">
-                  <h3 className="text-2xl font-bold">{creator.name}</h3>
-                  <h4 className="text-xl font-semibold my-4 text-gray-600">
-                    {creator.contestName}
-                  </h4>
-                  <p className="font-medium text-gray-700 mt-2">
-                    {creator.contestDescription}
-                  </p>
-                  <p className="text-gray-500 mt-2">
-                    Total Participants: {creator.participateCount}
-                  </p>
+                <div className="creator-info p-4 md:pl-8">
+                  <h3 className="text-2xl font-bold">{creator.creatorName}</h3>
+                  {creator.contests.map((contest, index) => (
+                    <div key={index} className="mt-4">
+                      <h4 className="text-xl font-semibold text-gray-600">
+                        {contest.contestName}
+                      </h4>
+                      <p className="font-medium text-gray-700 mt-2">
+                        {contest.contestDescription.slice(0, 75)}...
+                      </p>
+                      <p className="text-gray-500 mt-2">
+                        Participants: {contest.participantsCount}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
