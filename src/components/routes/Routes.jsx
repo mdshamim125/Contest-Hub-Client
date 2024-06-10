@@ -17,7 +17,7 @@ import ManageUser from "./../../pages/Dashboard/Admin/ManageUser";
 import ManageContests from "./../../pages/Dashboard/Admin/ManageContests";
 import ContestEdit from "./../../pages/Dashboard/Creator/ContestEdit";
 import ContestDetails from "../../pages/All-Contests/ContestDetails";
-import Payment from "../../pages/All-Contests/Payment";
+import Payment from "../../pages/All-Contests/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
