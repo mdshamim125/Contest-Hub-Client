@@ -17,6 +17,9 @@ import ManageContests from "./../../pages/Dashboard/Admin/ManageContests";
 import ContestEdit from "./../../pages/Dashboard/Creator/ContestEdit";
 import ContestDetails from "../../pages/All-Contests/ContestDetails";
 import Payment from "../../pages/All-Contests/Payment/Payment";
+import { PrivateRoute } from "./PrivateRoute";
+import CreatorRoute from "./CreatorRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -38,11 +41,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/all-contests/:id",
-        element: <ContestDetails></ContestDetails>,
+        element: (
+          <PrivateRoute>
+            <ContestDetails></ContestDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/payment/:id",
-        element: <Payment></Payment>,
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -51,7 +62,11 @@ export const router = createBrowserRouter([
 
   {
     path: "/dashboard",
-    element: <DashboardLayouts />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayouts />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard",
@@ -61,44 +76,92 @@ export const router = createBrowserRouter([
           </div>
         ),
       },
-      // user path
+      // user's path
       {
         path: "my-participated-contest",
-        element: <MyParticipatedContest></MyParticipatedContest>,
+        element: (
+          <PrivateRoute>
+            <MyParticipatedContest></MyParticipatedContest>
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-winning-contest",
-        element: <MyWinningContest></MyWinningContest>,
+        element: (
+          <PrivateRoute>
+            <MyWinningContest></MyWinningContest>
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-profile",
-        element: <MyProfile></MyProfile>,
+        element: (
+          <PrivateRoute>
+            <MyProfile></MyProfile>
+          </PrivateRoute>
+        ),
       },
-      // creator path
+      // creator's path
       {
         path: "add-contest",
-        element: <AddContest></AddContest>,
+        element: (
+          <PrivateRoute>
+            <CreatorRoute>
+              <AddContest></AddContest>
+            </CreatorRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-created-contest",
-        element: <MyCreatedContest></MyCreatedContest>,
+        element: (
+          <PrivateRoute>
+            <CreatorRoute>
+              <MyCreatedContest></MyCreatedContest>
+            </CreatorRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "contest-submitted",
-        element: <ContestSubmitted></ContestSubmitted>,
+        element: (
+          <PrivateRoute>
+            <CreatorRoute>
+              <ContestSubmitted></ContestSubmitted>
+            </CreatorRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "contest-edit/:id",
-        element: <ContestEdit></ContestEdit>,
+        element: (
+          <PrivateRoute>
+            <CreatorRoute>
+              <ContestEdit></ContestEdit>
+            </CreatorRoute>
+          </PrivateRoute>
+        ),
       },
       // admin path
       {
         path: "manage-user",
-        element: <ManageUser></ManageUser>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageUser></ManageUser>
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "manage-contests",
-        element: <ManageContests></ManageContests>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageContests></ManageContests>
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },
