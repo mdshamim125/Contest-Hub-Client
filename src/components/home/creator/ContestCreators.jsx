@@ -21,7 +21,7 @@ const ContestCreators = () => {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <section className="contest-creators-section py-16">
+    <section className="container w-full mx-auto contest-creators-section py-16">
       <h2 className="text-3xl font-bold text-center">Top Contest Creators</h2>
       <Swiper
         spaceBetween={30}

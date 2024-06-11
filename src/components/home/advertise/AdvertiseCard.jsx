@@ -12,46 +12,7 @@ const AdvertiseCard = ({ advertise }) => {
   // console.log(contestParticipants);
 
   return (
-    // <section className="contest-section">
-    //   {/* <div className="banner">
-    //     <img
-    //       className="banner-image"
-    //       src={images?.banner}
-    //       alt="Contest Banner"
-    //     />
-    //   </div> */}
-    //   <div className="content">
-    //     <h2 className="title">{text?.title}</h2>
-    //     {/* <p className="description">{text?.description}</p> */}
-    //     <div className="winner-info">
-    //       <div className="winner-image">
-    //         <img
-    //           className="w-48 rounded-full h-48"
-    //           src={contestWinner?.image}
-    //           alt="Contest Winner"
-    //         />
-    //       </div>
-    //       <div className="winner-details">
-    //         <p className="winner-name">
-    //
-    //         </p><strong>Winner:</strong> {contestWinner?.name}
-    //         <p className="winner-prize">
-    //           <strong>Prize:</strong> {contestWinner?.prize}
-    //         </p>
-    //       </div>
-    //     </div>
-    //     <p className="participants">
-    //       <strong>Contest Participants:</strong> {contestParticipants}
-    //     </p>
-    //     <p className="total-winners">
-    //       <strong>Total Contest Winners:</strong> {totalContestWinners}
-    //     </p>
-    //     {/* <p className="how-to-participate">{text?.howToParticipate}</p>
-    //     <p className="terms-and-conditions">{text?.termsAndConditions}</p> */}
-    //   </div>
-    // </section>
-
-    <div className="w-full overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 flex flex-col justify-center ">
+    <div className="container w-full overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 flex flex-col justify-center ">
       <div className="flex justify-center items-center mb-2">
         <a
           href="#"

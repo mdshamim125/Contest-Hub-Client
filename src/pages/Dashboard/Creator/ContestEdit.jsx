@@ -12,7 +12,7 @@ const ContestEdit = () => {
   const { id } = useParams();
   // console.log(id);
   const navigate = useNavigate();
-  const axiosSecure=useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
 
@@ -102,6 +102,8 @@ const ContestEdit = () => {
         creator,
         image: image_url,
         status: "pending",
+        participants: [],
+        participantsCount: 0,
       };
       // console.log(contestData);
       await mutateAsync(contestData);

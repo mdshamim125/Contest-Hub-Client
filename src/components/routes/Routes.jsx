@@ -38,11 +38,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/all-contests/:id",
-        element: <ContestDetails></ContestDetails>
+        element: <ContestDetails></ContestDetails>,
       },
       {
         path: "/payment/:id",
-        element: <Payment></Payment>
+        element: <Payment></Payment>,
       },
     ],
   },
@@ -53,6 +53,14 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashboardLayouts />,
     children: [
+      {
+        path: "/dashboard",
+        element: (
+          <div className="text-5xl min-h-screen font-bold flex justify-center items-center">
+            Welcome To Your Dashboard!
+          </div>
+        ),
+      },
       // user path
       {
         path: "my-participated-contest",

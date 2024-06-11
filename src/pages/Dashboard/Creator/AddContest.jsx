@@ -84,6 +84,8 @@ const AddContest = () => {
         creator,
         image: image_url,
         status: "pending",
+        participants: [],
+        participantsCount: 0,
       };
       // console.log(contestData);
       await mutateAsync(contestData);
