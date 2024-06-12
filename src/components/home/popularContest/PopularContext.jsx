@@ -15,7 +15,7 @@ const PopularContests = () => {
   });
 
   const handleGo = () => {
-    navigate(`/all-contests`)
+    navigate(`/all-contests`);
   };
 
   // console.log(popular);
@@ -24,9 +24,7 @@ const PopularContests = () => {
 
   return (
     <div className="container mx-auto px-6 py-16">
-      <h2 className="text-3xl text-center font-bold text-gray-800 dark:text-white">
-        Popular Contests
-      </h2>
+      <h2 className="text-center font-bold text-3xl my-12">Popular Contests</h2>
       <div className="grid gap-6 mt-8 lg:grid-cols-3">
         {popular.map((contest) => (
           <div

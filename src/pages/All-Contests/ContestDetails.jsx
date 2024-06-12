@@ -32,7 +32,7 @@ const ContestDetails = () => {
   }, [contest]);
 
   const handleRegister = (id) => {
-    console.log("hi");
+    // console.log("hi");
     navigate(`/payment/${id}`);
   };
 

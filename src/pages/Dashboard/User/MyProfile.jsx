@@ -5,19 +5,24 @@ import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import useAuth from "../../../components/hooks/useAuth";
 import "chart.js/auto";
 import toast from "react-hot-toast";
+import useRole from "../../../components/hooks/useRole";
 
 const MyProfile = () => {
   const axiosSecure = useAxiosSecure();
-  const { user, updateUser } = useAuth();
+  const { user, updateUserProfile } = useAuth();
+  const { loggedInUser } = useRole();
+  console.log(loggedInUser);
   const [profileData, setProfileData] = useState({
-    displayName: user?.displayName || "",
-    profilePicture: user?.photoURL || "",
-    address: user?.address || "",
+    displayName: loggedInUser?.displayName || user?.displayName,
+    profilePicture: loggedInUser?.photoURL || user?.photoURL,
+    address: loggedInUser?.address,
   });
   const [winPercentage, setWinPercentage] = useState(0);
 
   const fetchProfileStats = async () => {
-    const { data } = await axiosSecure.get(`/users/${user?.email}/stats`);
+    const { data } = await axiosSecure.get(
+      `/users/${loggedInUser?.email}/stats`
+    );
     return data;
   };
 
@@ -28,9 +33,10 @@ const MyProfile = () => {
 
   const updateProfile = async (updatedData) => {
     const { data } = await axiosSecure.put(
-      `/users/${user?.email}`,
+      `/users/${loggedInUser?.email}`,
       updatedData
     );
+    await updateUserProfile(loggedInUser?.displayName, loggedInUser?.photoURL);
     toast.success("User's information updated successfully");
     return data;
   };
@@ -51,8 +57,7 @@ const MyProfile = () => {
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
-    const updatedUser = await updateProfile(profileData);
-    updateUser(updatedUser);
+    await updateProfile(profileData);
   };
 
   if (statsLoading) {

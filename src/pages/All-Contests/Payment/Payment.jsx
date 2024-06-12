@@ -19,7 +19,7 @@ const Payment = () => {
         const { data } = await axiosSecure.get(`/contests/${id}`);
         setContest(data);
       } catch (error) {
-        console.error("Failed to fetch contest details", error);
+        // console.error("Failed to fetch contest details", error);
       }
     };
 

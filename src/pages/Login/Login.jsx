@@ -1,62 +1,57 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAuth from "./../../components/hooks/useAuth";
+
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { signInWithGoogle, signIn, user } =
-    useAuth();
+  const { signInWithGoogle, signIn, user } = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   useEffect(() => {
     if (user) {
       navigate("/");
     }
   }, [navigate, user]);
+
   const from = location.state || "/";
+
   const handleGoogleSignIn = async () => {
     try {
       const result = await signInWithGoogle();
-      // console.log(result.user);
       toast.success("Sign-in Successfully");
       navigate(from, { replace: true });
     } catch (err) {
-      // console.log(err);
-      toast.error("something went wrong!");
+      toast.error("Something went wrong!");
     }
   };
 
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const pass = form.password.value;
-    // console.log({ email, pass });
+  const handleSignIn = async (data) => {
     try {
-      const result = await signIn(email, pass);
-      // console.log(result.user);
-      // console.log(data);
+      const result = await signIn(data.email, data.password);
       toast.success("Sign-in Successful");
       navigate(from, { replace: true });
     } catch (err) {
-      // console.log(err);
-      toast.error("please enter a valid email or password!");
+      toast.error("Please enter a valid email or password!");
     }
   };
-  if (user) return;
+
+  if (user) return null;
+
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
-        {/* <div
-          className="hidden bg-cover bg-center lg:block lg:w-1/2"
-          style={{
-            backgroundImage: `url(${bgImg})`,
-          }}
-        ></div> */}
-
         <div className="w-full mx-auto px-6 py-8 md:px-8 lg:w-1/2">
           <div
             onClick={handleGoogleSignIn}
-            className="flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 "
+            className="flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg hover:bg-gray-50"
           >
             <div className="px-4 py-2">
               <svg className="w-6 h-6" viewBox="0 0 40 40">
@@ -78,7 +73,6 @@ const Login = () => {
                 />
               </svg>
             </div>
-
             <span className="w-5/6 px-4 py-3 font-bold text-center">
               Sign in with Google
             </span>
@@ -93,10 +87,10 @@ const Login = () => {
 
             <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
           </div>
-          <form onSubmit={handleSignIn}>
+          <form onSubmit={handleSubmit(handleSignIn)}>
             <div className="mt-4">
               <label
-                className="block mb-2 text-sm font-medium text-gray-600 "
+                className="block mb-2 text-sm font-medium text-gray-600"
                 htmlFor="LoggingEmailAddress"
               >
                 Email Address
@@ -105,17 +99,21 @@ const Login = () => {
                 id="LoggingEmailAddress"
                 placeholder="Email Address"
                 autoComplete="email"
-                name="email"
-                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
+                {...register("email", { required: "Email is required" })}
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 type="email"
-                required
               />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             <div className="mt-4">
               <div className="flex justify-between">
                 <label
-                  className="block mb-2 text-sm font-medium text-gray-600 "
+                  className="block mb-2 text-sm font-medium text-gray-600"
                   htmlFor="loggingPassword"
                 >
                   Password
@@ -126,11 +124,15 @@ const Login = () => {
                 id="loggingPassword"
                 autoComplete="current-password"
                 placeholder="Password"
-                name="password"
-                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
+                {...register("password", { required: "Password is required" })}
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 type="password"
-                required
               />
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
             <div className="mt-6">
               <button

@@ -22,7 +22,9 @@ const ContestCreators = () => {
 
   return (
     <section className="container w-full mx-auto contest-creators-section py-16">
-      <h2 className="text-3xl font-bold text-center">Top Contest Creators</h2>
+      <h2 className="text-center font-bold text-3xl my-12">
+        Top Contest Creators
+      </h2>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -48,7 +50,7 @@ const ContestCreators = () => {
                 />
                 <div className="creator-info p-4 md:pl-8">
                   <h3 className="text-2xl font-bold">{creator.creatorName}</h3>
-                  {creator.contests.map((contest, index) => (
+                  {creator.contests.slice(0, 3).map((contest, index) => (
                     <div key={index} className="mt-4">
                       <h4 className="text-xl font-semibold text-gray-600">
                         {contest.contestName}

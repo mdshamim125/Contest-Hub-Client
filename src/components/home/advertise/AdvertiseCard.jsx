@@ -34,7 +34,7 @@ const AdvertiseCard = ({ advertise }) => {
       <div className="font-semibold my-2 text-center">
         Contest Prize: {contestWinner?.prize}
       </div>
-      <div className="flex items-center justify-between px-6 font-medium mb-2">
+      <div className="px-6 font-medium mb-2">
         <div className="flex items-center justify-between gap-1 font-medium mb-2">
           <p>Total Participants:</p>
           <span className="text-sm text-gray-700 dark:text-gray-200">
