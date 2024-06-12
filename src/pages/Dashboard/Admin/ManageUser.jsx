@@ -1,7 +1,7 @@
-import { Helmet } from "react-helmet";
 import useAxiosSecure from "./../../../components/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import UserDataRow from "../../../components/dashboard/Sidebar/TableRows/UserDataRow";
+import { Helmet } from "react-helmet";
 const ManageUser = () => {
   const axiosSecure = useAxiosSecure();
   //   Fetch users Data
@@ -21,6 +21,9 @@ const ManageUser = () => {
   if (isLoading) return <p>loading...</p>;
   return (
     <>
+      <Helmet>
+        <title>Manage Users | Dashboard</title>
+      </Helmet>
       <h1 className="text-2xl font-bold text-center mt-6">
         Manage The Users Here
       </h1>

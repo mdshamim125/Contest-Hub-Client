@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import Countdown from "react-countdown";
 import useAxiosSecure from "../../components/hooks/useAxiosSecure";
 import useAuth from "../../components/hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const ContestDetails = () => {
   const { id } = useParams();
@@ -41,6 +42,9 @@ const ContestDetails = () => {
 
   return (
     <div className="container mx-auto p-4">
+       <Helmet>
+        <title>Contest Details | Contest Hub</title>
+      </Helmet>
       <h1 className="text-2xl font-bold mb-4">{contest.contestName}</h1>
       <img
         src={contest.image}

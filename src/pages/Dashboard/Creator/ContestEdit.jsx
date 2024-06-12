@@ -121,7 +121,7 @@ const ContestEdit = () => {
   return (
     <>
       <Helmet>
-        <title>Add Contest | Dashboard</title>
+        <title>Contest Edit | Dashboard</title>
       </Helmet>
 
       <EditContestForm

@@ -14,7 +14,7 @@ const useRole = () => {
     },
   });
 
-  return {loggedInUser, isLoading};
+  return { loggedInUser, isLoading };
 };
 
 export default useRole;

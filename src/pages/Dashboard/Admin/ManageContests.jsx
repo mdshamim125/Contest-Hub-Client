@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import CommentModal from "../../modals/CommentModal";
+import { Helmet } from "react-helmet";
 
 const ManageContests = () => {
   const axiosSecure = useAxiosSecure();
@@ -86,6 +87,9 @@ const ManageContests = () => {
 
   return (
     <div className="p-4">
+      <Helmet>
+        <title>Manage Contests | Dashboard</title>
+      </Helmet>
       <h1 className="text-3xl text-center font-bold my-6">Manage Contests</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">

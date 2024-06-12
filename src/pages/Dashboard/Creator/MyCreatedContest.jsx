@@ -29,7 +29,7 @@ const MyCreatedContest = () => {
   //   delete
   const { mutateAsync } = useMutation({
     mutationFn: async (id) => {
-      const { data } = await axiosSecure.delete(`/contests/${id}`);
+      const { data } = await axiosSecure.delete(`/contest/${id}`);
       return data;
     },
     onSuccess: (data) => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import useAuth from "../../../components/hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const ContestSubmitted = () => {
   const axiosSecure = useAxiosSecure();
@@ -56,6 +57,9 @@ const ContestSubmitted = () => {
 
   return (
     <div className="container mx-auto p-6">
+       <Helmet>
+        <title>Contest Submitted | Dashboard</title>
+      </Helmet>
       <h1 className="text-2xl font-bold mb-6">Your Created Contests</h1>
       <ul className="space-y-4 mb-6">
         {contests?.map((contest) => (

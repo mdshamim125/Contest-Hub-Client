@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../components/hooks/useAxiosPublic";
+import { Helmet } from "react-helmet";
 
 const AllContests = () => {
   const axiosPublic=useAxiosPublic()
@@ -23,6 +24,9 @@ const AllContests = () => {
 
   return (
     <div className="container mx-auto p-4">
+       <Helmet>
+        <title>All Contest | Contest Hub</title>
+      </Helmet>
       <h1 className="text-2xl text-center font-bold my-4">All Contests</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

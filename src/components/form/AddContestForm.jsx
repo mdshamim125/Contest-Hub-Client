@@ -129,7 +129,7 @@ const AddContestForm = ({
           <div className="space-y-6">
             <div className="space-y-1 text-sm">
               <label htmlFor="prizeMoney" className="block text-gray-600">
-                Prize Money or Others
+                Prize Money
               </label>
               <input
                 className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md"
