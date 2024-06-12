@@ -39,7 +39,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="sticky top-0 bg-blue-800 p-4 z-50">
+    <nav className="sticky top-0 bg-gradient-to-r from-blue-500  via-blue-600 to-blue-700 p-4 z-50 text- white">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <button
