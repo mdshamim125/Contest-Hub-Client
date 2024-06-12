@@ -30,14 +30,11 @@ const ContestSubmitted = () => {
     queryFn: fetchContests,
   });
 
-  const { mutate: declareWinner } = useMutation(
-    async (submissionId) => {
-      await axiosSecure.post(
-        `/contests/${selectedContestId}/submissions/${submissionId}/declare-winner`
-      );
-    },
-
-  );
+  const { mutate : declareWinner } = useMutation(async (submissionId) => {
+    await axiosSecure.post(
+      `/contests/${selectedContestId}/submissions/${submissionId}/declare-winner`
+    );
+  });
 
   useEffect(() => {
     if (contestData) {
@@ -55,9 +52,13 @@ const ContestSubmitted = () => {
     return <div className="text-center py-6">Loading...</div>;
   }
 
+  const handleDeclareWinner = async (userId) => {
+    declareWinner(userId);
+  };
+
   return (
     <div className="container mx-auto p-6">
-       <Helmet>
+      <Helmet>
         <title>Contest Submitted | Dashboard</title>
       </Helmet>
       <h1 className="text-2xl font-bold mb-6">Your Created Contests</h1>
@@ -88,9 +89,7 @@ const ContestSubmitted = () => {
                 <p className="text-lg font-medium">
                   Name: {submission.userName}
                 </p>
-                <p className="text-gray-600">
-                  Email: {submission.userEmail}
-                </p>
+                <p className="text-gray-600">Email: {submission.userEmail}</p>
                 <p className="text-gray-600">
                   Submitted Task:{" "}
                   <a
@@ -99,12 +98,12 @@ const ContestSubmitted = () => {
                     rel="noopener noreferrer"
                     className="text-blue-500 underline"
                   >
-                    {submission.taskLink}
+                    {submission?.taskLink}
                   </a>
                 </p>
-                {!submission.isWinner && (
+                {!submission?.isWinner && (
                   <button
-                    onClick={() => declareWinner(submission.userId)}
+                    onClick={() => handleDeclareWinner(submission?.userId)}
                     className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
                   >
                     Declare Win
