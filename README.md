@@ -2,6 +2,8 @@
 
 Welcome to the Contest Hub! This is a web application that allows administrators to create and manage contests, as well as view and judge submissions from participants.
 
+Contest Hub is a comprehensive web application designed for administrators to efficiently manage contests and submissions. It offers secure user authentication with encrypted passwords for data safety. The platform features multiple dashboards: an admin dashboard for overall contest and user management, a creator dashboard to manage contests before admin approval, and a user dashboard for managing participation, wins, profiles, and statistics. Contest creation includes details like contest name, prize money, and submission deadlines, while submissions can be viewed in detail, including participant information. Winners can be declared easily, with their status prominently displayed, and the application provides real-time updates using React Query for seamless data management. With secure API calls, responsive design, and Helmet integration for unique page titles, Contest Hub ensures a user-friendly experience across desktop, tablet, and mobile devices.
+
 ## Admin Credentials
 
 - **Admin Username:** admin@gmail.com
