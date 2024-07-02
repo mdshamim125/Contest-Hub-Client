@@ -60,3 +60,32 @@ Contest Hub is a comprehensive web application designed for administrators to ef
 **Helmet Integration:**
 
 - Unique titles for each page within the application.
+
+
+## NPM Packages Used
+The following NPM packages are used in this project:
+
+- `@headlessui/react`: ^2.0.4
+- `@stripe/react-stripe-js`: ^2.7.1
+- `@stripe/stripe-js`: ^3.5.0
+- `@tanstack/react-query`: ^5.40.0
+- `axios`: ^1.7.2
+- `chart.js`: ^4.4.3
+- `firebase`: ^10.12.2
+- `jsonwebtoken`: ^9.0.2
+- `react`: ^18.2.0
+- `react-chartjs-2`: ^5.2.0
+- `react-countdown`: ^2.3.5
+- `react-datepicker`: ^6.9.0
+- `react-dom`: ^18.2.0
+- `react-helmet`: ^6.1.0
+- `react-helmet-async`: ^2.0.5
+- `react-hook-form`: ^7.51.5
+- `react-hot-toast`: ^2.4.1
+- `react-icons`: ^5.2.1
+- `react-loader-spinner`: ^6.1.6
+- `react-router-dom`: ^6.23.1
+- `react-simple-captcha`: ^9.3.1
+- `sweetalert2`: ^11.11.0
+- `swiper`: ^11.1.4
+
