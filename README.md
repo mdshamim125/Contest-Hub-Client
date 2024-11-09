@@ -1,6 +1,8 @@
 # Contest Hub
 
-Welcome to the Contest Hub! This is a web application that allows administrators to create and manage contests, as well as view and judge submissions from participants.
+Welcome to the [Contest Hub](https://contest-hub-c5704.web.app)! This is a web application that allows administrators to create and manage contests, as well as view and judge submissions from participants.
+
+Contest Hub is a comprehensive web application designed for administrators to efficiently manage contests and submissions. It offers secure user authentication with encrypted passwords for data safety. The platform features multiple dashboards: an admin dashboard for overall contest and user management, a creator dashboard to manage contests before admin approval, and a user dashboard for managing participation, wins, profiles, and statistics. Contest creation includes details like contest name, prize money, and submission deadlines, while submissions can be viewed in detail, including participant information. Winners can be declared easily, with their status prominently displayed, and the application provides real-time updates using React Query for seamless data management. With secure API calls, responsive design, and Helmet integration for unique page titles, Contest Hub ensures a user-friendly experience across desktop, tablet, and mobile devices.
 
 ## Admin Credentials
 
@@ -58,3 +60,32 @@ Welcome to the Contest Hub! This is a web application that allows administrators
 **Helmet Integration:**
 
 - Unique titles for each page within the application.
+
+
+## NPM Packages Used
+The following NPM packages are used in this project:
+
+- `@headlessui/react`: ^2.0.4
+- `@stripe/react-stripe-js`: ^2.7.1
+- `@stripe/stripe-js`: ^3.5.0
+- `@tanstack/react-query`: ^5.40.0
+- `axios`: ^1.7.2
+- `chart.js`: ^4.4.3
+- `firebase`: ^10.12.2
+- `jsonwebtoken`: ^9.0.2
+- `react`: ^18.2.0
+- `react-chartjs-2`: ^5.2.0
+- `react-countdown`: ^2.3.5
+- `react-datepicker`: ^6.9.0
+- `react-dom`: ^18.2.0
+- `react-helmet`: ^6.1.0
+- `react-helmet-async`: ^2.0.5
+- `react-hook-form`: ^7.51.5
+- `react-hot-toast`: ^2.4.1
+- `react-icons`: ^5.2.1
+- `react-loader-spinner`: ^6.1.6
+- `react-router-dom`: ^6.23.1
+- `react-simple-captcha`: ^9.3.1
+- `sweetalert2`: ^11.11.0
+- `swiper`: ^11.1.4
+
