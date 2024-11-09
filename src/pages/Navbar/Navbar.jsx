@@ -10,7 +10,7 @@ const Navbar = () => {
   const [isOpenNav, setIsOpenNav] = useState(false);
 
   const handleDropDownProfile = () => setIsOpen(!isOpen);
-  const handleDropDownNav = () => setIsOpenNav(!isOpen);
+  const handleDropDownNav = () => setIsOpenNav(!isOpenNav);
   const handleToggle = (e) => setTheme(e.target.checked ? "dark" : "light");
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="sticky top-0 bg-gradient-to-r from-blue-500  via-blue-600 to-blue-700 p-4 z-50 text- white">
+    <nav className="p-3 z-50 shadow-lg text- white">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <button
@@ -64,7 +64,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center ml-3">
             <img
               src={logo}
-              className="w-20 bg-slate-300 rounded-full"
+              className="w-16 bg-slate-300 rounded-full"
               alt="Logo"
             />
           </Link>
@@ -111,7 +111,7 @@ const Navbar = () => {
               </svg>
             )}
           </label>
-          <div className="relative">
+          <div className="relative z-10">
             <button
               onClick={handleDropDownProfile}
               className="btn btn-ghost btn-circle avatar"

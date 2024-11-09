@@ -1,51 +1,54 @@
 import React from "react";
+import { FaUser, FaTrophy, FaGift } from "react-icons/fa";
 
 const AdvertiseCard = ({ advertise }) => {
-  const {
-    contestWinner,
-    contestParticipants,
-    totalContestWinners,
-    text,
-    images,
-  } = advertise;
-  // console.log(advertise);
-  // console.log(contestParticipants);
+  const { contestWinner, contestParticipants, totalContestWinners } = advertise;
 
   return (
-    <div className="container w-full overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 flex flex-col justify-center ">
-      <div className="flex justify-center items-center mb-2">
-        <a
-          href="#"
-          className="block text-xl font-bold text-gray-800 dark:text-white"
-          tabIndex="0"
-          role="link"
-        >
+    <div className="container w-full overflow-hidden bg-blue-950 rounded-lg shadow-lg dark:bg-gray-800 flex flex-col items-center p-6">
+      {/* Contest Winner's Name */}
+      <div className="text-center mb-4">
+        <h2 className="text-2xl text-blue-400 font-bold ">
           {contestWinner?.name}
-        </a>
+        </h2>
       </div>
-      <div className="flex items-center justify-center">
+
+      {/* Contest Winner's Image */}
+      <div className="w-32 h-32 rounded-full overflow-hidden mb-4">
         <img
-          className="object-cover w-64 rounded-full h-64"
+          className="object-cover w-full h-full"
           src={contestWinner?.image}
           alt="Contest Winner"
         />
       </div>
 
-      <div className="font-semibold my-2 text-center">
-        Contest Prize: {contestWinner?.prize}
+      {/* Contest Prize */}
+      <div className="flex items-center justify-center gap-2 font-semibold text-yellow-600 dark:text-yellow-400 mb-4">
+        <FaGift className="text-lg" />
+        <span>Contest Prize: {contestWinner?.prize}</span>
       </div>
-      <div className="px-6 font-medium mb-2">
-        <div className="flex items-center justify-between gap-1 font-medium mb-2">
-          <p>Total Participants:</p>
-          <span className="text-sm text-gray-700 dark:text-gray-200">
+
+      {/* Additional Contest Details */}
+      <div className="w-full px-6">
+        <div className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+          <span className="flex items-center gap-2 text-gray-700 dark:text-gray-200 font-medium">
+            <FaUser className="text-blue-500" /> Total Participants
+          </span>
+          <span className="text-gray-600 dark:text-gray-300">
             {contestParticipants}
           </span>
         </div>
-        <div className="flex items-center justify-between gap-1 font-medium mb-2">
-          <p>Total Winners:</p>
-          <p>{totalContestWinners}</p>
+        <div className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+          <span className="flex items-center gap-2 text-gray-700 dark:text-gray-200 font-medium">
+            <FaTrophy className="text-green-500" /> Total Winners
+          </span>
+          <span className="text-gray-600 dark:text-gray-300">
+            {totalContestWinners}
+          </span>
         </div>
       </div>
+
+
     </div>
   );
 };

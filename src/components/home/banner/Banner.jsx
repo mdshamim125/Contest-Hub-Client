@@ -16,25 +16,35 @@ const Banner = () => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-blue-500  via-blue-600 to-blue-700 text-white">
-      <div className="container px-6 py-16 mx-auto">
+    <header
+      className="bg-cover bg-center relative flex items-center text-white"
+      style={{
+        backgroundImage: `url(${banner})`,
+        minHeight: "calc(100vh - 90px)", // Use inline style for calc()
+      }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+
+      <div className="container relative px-6 py-16 mx-auto">
         <div className="items-center lg:flex">
           <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg">
               <h1 className="text-3xl font-semibold lg:text-4xl">
                 Welcome To The{" "}
-                <span className="text-yellow-300">Contest Hub</span>
+                <span className="text-blue-400">Contest Hub</span>
               </h1>
 
               <p className="mt-3 text-lg">
                 Be the winner by participating in our{" "}
-                <span className="font-medium text-yellow-300">amazing</span>{" "}
+                <span className="font-medium text-blue-400">amazing</span>{" "}
                 contests
               </p>
 
               <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
                 <input
                   type="text"
+                  required
                   className="px-4 py-2 text-gray-700 bg-white border rounded-md focus:border-yellow-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-yellow-300"
                   placeholder="Search By Tag Name"
                   value={searchItem}
@@ -50,16 +60,9 @@ const Banner = () => {
               </div>
             </div>
           </div>
-
-          <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-            <img
-              className="w-full md:h-[400px] max-w-md rounded-md"
-              src={banner}
-              alt="email illustration vector art"
-            />
-          </div>
         </div>
       </div>
+
       {isModalOpen && (
         <SearchResultsModal
           results={searchResults}
