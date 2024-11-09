@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: (
-          <div className="text-5xl min-h-screen font-bold flex justify-center items-center bg-gradient-to-r from-blue-500  via-blue-600 to-blue-700">
+          <div className="text-5xl bg-gradient-to-r from-blue-900 to-blue-800 min-h-screen font-bold flex justify-center items-center">
             Welcome To Your Dashboard!
           </div>
         ),

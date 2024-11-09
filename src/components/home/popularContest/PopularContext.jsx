@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import { Link, useNavigate } from "react-router-dom";
-import { FaUser, FaDollarSign } from "react-icons/fa";
+import { FaUser, FaDollarSign, FaCalendarAlt} from "react-icons/fa";
 
 const PopularContests = () => {
   const axiosPublic = useAxiosPublic();
@@ -47,6 +47,10 @@ const PopularContests = () => {
                 <FaDollarSign className="mr-2 text-green-500" />
                 Prize Money: {contest.prizeMoney}
               </p>
+              <div className="flex items-center mt-2 text-gray-600">
+                <FaCalendarAlt className="mr-2 text-blue-500" />
+                <span>Deadline: {new Date(contest.deadline).toLocaleDateString()}</span>
+              </div>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                 {contest.description.slice(0, 100)}...
               </p>

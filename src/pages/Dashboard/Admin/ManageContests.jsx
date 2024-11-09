@@ -86,14 +86,14 @@ const ManageContests = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 text-white">
       <Helmet>
         <title>Manage Contests | Dashboard</title>
       </Helmet>
       <h1 className="text-3xl text-center font-bold my-6">Manage Contests</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+          <thead className="">
             <tr>
               <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Title
@@ -109,7 +109,7 @@ const ManageContests = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className=" divide-y divide-gray-200">
             {contests?.map((contest) => (
               <tr key={contest._id} className="text-center">
                 <td className="px-6 py-4 whitespace-nowrap">

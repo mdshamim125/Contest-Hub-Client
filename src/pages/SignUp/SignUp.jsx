@@ -66,8 +66,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-[500px] my-20">
-      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white border rounded-lg shadow-lg lg:max-w-4xl ">
+    <div className="flex justify-center items-center bg-gradient-to-r from-blue-900 to-blue-800 min-h-screen py-20">
+      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-blue-950  rounded-lg shadow-lg lg:max-w-4xl ">
         <div className="w-full mx-auto px-6 py-8 md:px-8 lg:w-1/2">
           <div
             onClick={handleGoogleSignIn}

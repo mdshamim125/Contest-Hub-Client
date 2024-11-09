@@ -46,8 +46,8 @@ const Login = () => {
   if (user) return null;
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
-      <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
+    <div className="flex justify-center bg-gradient-to-r from-blue-900 to-blue-800 items-center min-h-screen py-12">
+      <div className="flex w-full bg-blue-950 max-w-sm mx-auto overflow-hidden  rounded-lg shadow-lg  lg:max-w-4xl ">
         <div className="w-full mx-auto px-6 py-8 md:px-8 lg:w-1/2">
           <div
             onClick={handleGoogleSignIn}
