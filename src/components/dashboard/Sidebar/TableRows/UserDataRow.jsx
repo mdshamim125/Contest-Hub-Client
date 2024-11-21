@@ -128,10 +128,10 @@ const UserDataRow = ({ user, refetch }) => {
   return (
     <tr>
       <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <p className="text-gray-900 text-lg whitespace-no-wrap">{user?.email}</p>
+        <p className="text-white text-lg whitespace-no-wrap">{user?.email}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <p className="text-gray-900 text-lg whitespace-no-wrap">{user?.role}</p>
+        <p className="text-white text-lg whitespace-no-wrap">{user?.role}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 text-sm">
         {user?.status ? (
