@@ -39,12 +39,12 @@ const MyParticipatedContest = () => {
  }
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-semibold mb-6">My Participated Contests</h1>
+      <h1 className="text-3xl font-semibold mb-6 text-white">My Participated Contests</h1>
       <button className="btn btn-primary mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Sort by Upcoming
       </button>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300">
+        <table className="min-w-full text-white border border-gray-300">
           <thead>
             <tr>
               <th className="border border-gray-300 px-4 py-2">Contest Name</th>
@@ -57,7 +57,7 @@ const MyParticipatedContest = () => {
           </thead>
           <tbody>
             {contests?.map((contest) => (
-              <tr key={contest._id} className="hover:bg-gray-100 text-center">
+              <tr key={contest._id} className=" text-center">
                 <td className="border border-gray-300 px-4 py-2">
                   {contest.contestName}
                 </td>
@@ -72,7 +72,7 @@ const MyParticipatedContest = () => {
                 <td className="border border-gray-300 px-4 py-2">
                   <Link
                     to={`/all-contests/${contest._id}`}
-                    className="btn btn-sm btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    className="btn btn-sm btn-primary bg-blue-500 text-white font-bold py-2 px-4 rounded"
                   >
                     View Details
                   </Link>
@@ -82,7 +82,7 @@ const MyParticipatedContest = () => {
           </tbody>
         </table>
       </div>
-      <button onClick={handleGoing}  className="btn text-center text-large w-full mt-4">Participate More</button>
+      <button onClick={handleGoing}  className="btn bg-blue-500 hover:bg-blue-950 text-white text-center text-large w-full mt-4">Participate More</button>
     </div>
   );
 };
