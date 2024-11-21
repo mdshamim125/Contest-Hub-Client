@@ -61,10 +61,10 @@ const ContestSubmitted = () => {
       <Helmet>
         <title>Contest Submitted | Dashboard</title>
       </Helmet>
-      <h1 className="text-2xl font-bold mb-6">Your Created Contests</h1>
+      <h1 className="text-2xl font-bold mb-6 text-white">Your Created Contests</h1>
       <ul className="space-y-4 mb-6">
         {contests?.map((contest) => (
-          <li key={contest._id} className="p-4 bg-white shadow rounded-lg">
+          <li key={contest._id} className="p-4 bg-blue-950 text-white shadow rounded-lg">
             <h2 className="text-xl font-semibold">{contest.contestName}</h2>
             <p className="text-gray-600">Prize: {contest.prizeMoney}</p>
             <button
@@ -79,17 +79,17 @@ const ContestSubmitted = () => {
 
       {selectedContestId && (
         <div>
-          <h2 className="text-xl font-bold mb-4">Submissions for Contest</h2>
+          <h2 className="text-xl text-white font-bold mb-4">Submissions for Contest</h2>
           <ul className="space-y-4">
             {submissions?.map((submission) => (
               <li
                 key={submission._id}
-                className="p-4 bg-white shadow rounded-lg"
+                className="p-4 bg-blue-950  shadow rounded-lg"
               >
                 <p className="text-lg font-medium">
                   Name: {submission.userName}
                 </p>
-                <p className="text-gray-600">Email: {submission.userEmail}</p>
+                <p className="text-white">Email: {submission.userEmail}</p>
                 <p className="text-gray-600">
                   Submitted Task:{" "}
                   <a

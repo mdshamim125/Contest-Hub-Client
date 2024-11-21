@@ -42,16 +42,16 @@ const AddContestForm = ({
   const { loggedInUser } = useRole();
   // console.log(loggedInUser);
   return (
-    <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+    <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 dark:text-white rounded-xl bg-blue-950 ">
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-6">
             <div className="space-y-1 text-sm">
-              <label htmlFor="contestName" className="block text-gray-600">
+              <label htmlFor="contestName" className="block text-white">
                 Contest Name
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md"
+                className="w-full px-4 py-3 text-gray-800 dark:text-white border border-rose-300 focus:outline-rose-500 rounded-md"
                 name="contestName"
                 id="contestName"
                 type="text"
@@ -63,7 +63,7 @@ const AddContestForm = ({
             </div>
 
             <div className="space-y-1">
-              <label htmlFor="image" className="block text-gray-600">
+              <label htmlFor="image" className="block text-white">
                 Image
               </label>
               <div className="p-4 bg-white w-full m-auto rounded-lg flex justify-between items-center">
@@ -96,12 +96,12 @@ const AddContestForm = ({
             </div>
 
             <div className="space-y-1 text-sm">
-              <label htmlFor="description" className="block text-gray-600">
+              <label htmlFor="description" className="block text-white">
                 Contest Description
               </label>
               <textarea
                 id="description"
-                className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500"
+                className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800 dark:text-white border border-rose-300 focus:outline-rose-500"
                 name="description"
                 required
                 value={description}
@@ -110,11 +110,11 @@ const AddContestForm = ({
             </div>
 
             <div className="space-y-1 text-sm">
-              <label htmlFor="price" className="block text-gray-600">
+              <label htmlFor="price" className="block text-gray-100">
                 Contest Price
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md"
+                className="w-full px-4 py-3 text-gray-800 dark:text-white border border-rose-300 focus:outline-rose-500 rounded-md"
                 name="price"
                 id="price"
                 type="number"
@@ -128,11 +128,11 @@ const AddContestForm = ({
 
           <div className="space-y-6">
             <div className="space-y-1 text-sm">
-              <label htmlFor="prizeMoney" className="block text-gray-600">
+              <label htmlFor="prizeMoney" className="block text-white">
                 Prize Money
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md"
+                className="w-full px-4 py-3 text-gray-800 dark:text-white border border-rose-300 focus:outline-rose-500 rounded-md"
                 name="prizeMoney"
                 id="prizeMoney"
                 type="text"
@@ -144,12 +144,12 @@ const AddContestForm = ({
             </div>
 
             <div className="space-y-1 text-sm">
-              <label htmlFor="taskSubmission" className="block text-gray-600">
+              <label htmlFor="taskSubmission" className="block text-white">
                 Task Submission Instructions
               </label>
               <textarea
                 id="taskSubmission"
-                className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500"
+                className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800 dark:text-white border border-rose-300 focus:outline-rose-500"
                 name="taskSubmission"
                 required
                 value={taskSubmission}
@@ -158,11 +158,11 @@ const AddContestForm = ({
             </div>
 
             <div className="space-y-1 text-sm">
-              <label htmlFor="tags" className="block text-gray-600">
+              <label htmlFor="tags" className="block text-white">
                 Contest Type/Tags
               </label>
               <Listbox value={selectedTag} onChange={setSelectedTag}>
-                <Listbox.Button className="w-full px-4 py-3 border border-rose-300 focus:outline-rose-500 rounded-md">
+                <Listbox.Button className="w-full px-4 py-3 border border-rose-300 focus:outline-rose-500 rounded-md text-white">
                   {selectedTag}
                 </Listbox.Button>
                 <Listbox.Options>
@@ -170,7 +170,7 @@ const AddContestForm = ({
                     <Listbox.Option
                       key={index}
                       value={tag}
-                      className="cursor-pointer select-none relative py-2 pl-10 pr-4"
+                      className="cursor-pointer text-white select-none relative py-2 pl-10 pr-4"
                     >
                       {tag}
                     </Listbox.Option>
@@ -180,7 +180,7 @@ const AddContestForm = ({
             </div>
 
             <div className="space-y-1 text-sm">
-              <label htmlFor="deadline" className="block text-gray-600">
+              <label htmlFor="deadline" className="block text-white">
                 Contest Deadline
               </label>
               <DatePicker

@@ -83,9 +83,9 @@ const MyCreatedContest = () => {
         <title>My Contests | Dashboard</title>
       </Helmet>
       <div className="p-4">
-        <h1 className="text-2xl font-semibold mb-4">My Contests</h1>
+        <h1 className="text-2xl text-white font-semibold mb-4">My Contests</h1>
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border rounded-lg">
+          <table className="min-w-full bg-blue-950 text-white border rounded-lg">
             <thead>
               <tr>
                 <th className="py-2 px-4 border-b">Name</th>
