@@ -45,10 +45,12 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 lg:px-20">
+      <div  className="container mx-auto px-6 lg:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white  shadow-md rounded-lg p-8">
+          <div data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-sine" className="bg-white  shadow-md rounded-lg p-8">
             <h3 className="text-2xl font-popins font-semibold text-gray-800  mb-6">
               Contact Form
             </h3>
@@ -114,7 +116,9 @@ const Contact = () => {
           </div>
 
           {/* Contact Information */}
-          <div>
+          <div data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-sine">
             <div className="mb-8">
               <h1 className="text-2xl font-popins font-semibold text-gray-800  mb-4">
                 Contest Hub

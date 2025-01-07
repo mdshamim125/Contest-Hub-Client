@@ -25,7 +25,9 @@ const Advertise = () => {
     );
   }
   return (
-    <div>
+    <div  data-aos="fade-up"
+    data-aos-duration="1000"
+    data-aos-easing="ease-in-sine">
       <div className="text-center text-white font-bold text-3xl my-12">
         <h1>Contest Winners</h1>
       </div>

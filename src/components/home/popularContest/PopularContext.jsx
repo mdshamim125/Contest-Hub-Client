@@ -30,7 +30,9 @@ const PopularContests = () => {
 
   return (
     <div className="container mx-auto px-6 py-6">
-      <h2 className="text-center text-white font-bold text-3xl my-12">
+      <h2 data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-sine" className="text-center text-white font-bold text-3xl my-12">
         Popular Contests
       </h2>
 
@@ -38,6 +40,9 @@ const PopularContests = () => {
         <div className="grid gap-6 mt-8 lg:grid-cols-3">
           {popular.map((contest) => (
             <div
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-sine"
               key={contest._id}
               className="bg-blue-950 p-2 rounded-lg shadow-lg overflow-hidden"
             >

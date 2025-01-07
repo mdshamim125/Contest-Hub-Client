@@ -36,13 +36,18 @@ const AllContests = () => {
       <Helmet>
         <title>All Contest | Contest Hub</title>
       </Helmet>
-      <h1 className="text-2xl text-center text-white font-bold my-4">
+      <h1 data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-sine" className="text-2xl text-center text-white font-bold my-4">
         All Contests
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {contests?.map((contest) => (
           <div
+          data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-sine"
             key={contest._id}
             className="bg-blue-950 p-2 rounded-lg shadow-lg overflow-hidden"
           >

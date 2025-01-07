@@ -59,7 +59,9 @@ import { FaGithub, FaLinkedin, FaFacebookSquare, FaTwitter } from "react-icons/f
 const Footer = () => {
   return (
     <div>
-      <footer className="relative pt-8 pb-6">
+      <footer data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-sine" className="relative pt-8 pb-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap text-left lg:text-left">
             <div className="w-full lg:w-6/12 px-4">

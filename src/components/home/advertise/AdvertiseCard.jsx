@@ -5,7 +5,9 @@ const AdvertiseCard = ({ advertise }) => {
   const { contestWinner, contestParticipants, totalContestWinners } = advertise;
 
   return (
-    <div className="container w-full overflow-hidden bg-blue-950 rounded-lg shadow-lg dark:bg-gray-800 flex flex-col items-center p-6">
+    <div  data-aos="fade-up"
+    data-aos-duration="1000"
+    data-aos-easing="ease-in-sine" className="container w-full overflow-hidden bg-blue-950 rounded-lg shadow-lg dark:bg-gray-800 flex flex-col items-center p-6">
       {/* Contest Winner's Name */}
       <div className="text-center mb-4">
         <h2 className="text-2xl text-blue-400 font-bold ">

@@ -29,7 +29,12 @@ const Banner = () => {
 
       <div className="container relative px-6 py-16 mx-auto">
         <div className="items-center lg:flex">
-          <div className="w-full lg:w-1/2">
+          <div
+            className="w-full lg:w-1/2"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-sine"
+          >
             <div className="lg:max-w-lg">
               <h1 className="text-3xl font-semibold lg:text-4xl">
                 <Typewriter
