@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import useAuth from "../../../components/hooks/useAuth";
+import RingLoader from "react-spinners/RingLoader";
 
 const MyWinningContest = () => {
   const axiosSecure = useAxiosSecure();
@@ -28,7 +29,11 @@ const MyWinningContest = () => {
   }, [data]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader color="#2563eb" size={100} />
+      </div>
+    );
   }
   const handleGo = () => {
     navigate(`/all-contests/`);

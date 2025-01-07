@@ -7,6 +7,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { FaTrophy, FaUsers, FaInfoCircle } from "react-icons/fa";
+import RingLoader from "react-spinners/RingLoader";
 
 const ContestCreators = () => {
   const axiosPublic = useAxiosPublic();
@@ -19,7 +20,13 @@ const ContestCreators = () => {
     },
   });
 
-  if (isLoading) return <p className="text-center text-white">Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader color="#2563eb" size={100} />
+      </div>
+    );
+  }
 
   return (
     <section className="container mx-auto py-16 text-white rounded-lg  px-6 md:px-8">

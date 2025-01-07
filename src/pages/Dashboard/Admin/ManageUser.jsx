@@ -2,6 +2,7 @@ import useAxiosSecure from "./../../../components/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import UserDataRow from "../../../components/dashboard/Sidebar/TableRows/UserDataRow";
 import { Helmet } from "react-helmet";
+import RingLoader from "react-spinners/RingLoader";
 const ManageUser = () => {
   const axiosSecure = useAxiosSecure();
   //   Fetch users Data
@@ -18,7 +19,13 @@ const ManageUser = () => {
   });
 
   // console.log(users);
-  if (isLoading) return <p>loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader color="#2563eb" size={100} />
+      </div>
+    );
+  }
   return (
     <>
       <Helmet>

@@ -7,6 +7,7 @@ import useAxiosSecure from "../../components/hooks/useAxiosSecure";
 import useAuth from "../../components/hooks/useAuth";
 import { Helmet } from "react-helmet";
 import { FaDollarSign, FaUsers, FaTrophy, FaClipboardList, FaRegClock } from "react-icons/fa";
+import RingLoader from "react-spinners/RingLoader";
 
 const ContestDetails = () => {
   const { id } = useParams();
@@ -37,7 +38,13 @@ const ContestDetails = () => {
     navigate(`/payment/${id}`);
   };
 
-  if (isLoading) return <p className="text-center text-white">Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader color="#2563eb" size={100} />
+      </div>
+    );
+  }
   if (error) return <p className="text-center text-red-500">Error loading contest details.</p>;
 
   return (

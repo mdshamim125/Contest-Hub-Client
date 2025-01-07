@@ -2,6 +2,7 @@ import React from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import AdvertiseCard from "./AdvertiseCard";
+import RingLoader from "react-spinners/RingLoader";
 
 const Advertise = () => {
   const axiosPublic = useAxiosPublic();
@@ -16,7 +17,13 @@ const Advertise = () => {
 
   // console.log(advertise);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader color="#2563eb" size={100} />
+      </div>
+    );
+  }
   return (
     <div>
       <div className="text-center text-white font-bold text-3xl my-12">

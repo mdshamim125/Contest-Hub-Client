@@ -4,6 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import CheckoutForm from "./CheckoutForm";
+import RingLoader from "react-spinners/RingLoader";
 
 // TODO: add publishable key
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
@@ -27,12 +28,18 @@ const Payment = () => {
   }, [id, axiosSecure]);
 
   if (!contest) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader color="#2563eb" size={100} />
+      </div>
+    );
   }
 
   return (
     <div>
-      <h1 className="text-2xl font-medium text-center mt-12 mb-6">Pay For {contest.contestName}</h1>
+      <h1 className="text-2xl font-medium text-center mt-12 mb-6">
+        Pay For {contest.contestName}
+      </h1>
       <Elements stripe={stripePromise}>
         <CheckoutForm contestPrice={contest.price} contest={contest} />
       </Elements>

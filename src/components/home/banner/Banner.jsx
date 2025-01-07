@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Typewriter } from "react-simple-typewriter";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SearchResultsModal from "../../../pages/modals/SearchResultsModal";
 import banner from "../../../../public/contest-banner.jpg";
@@ -9,18 +10,18 @@ const Banner = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSearch = async () => {
-    const response = await axiosPublic.get(`/api/contests?tag=${searchItem}`);
-    setSearchResults(response.data);
-    setIsModalOpen(true);
-  };
+  // const handleSearch = async () => {
+  //   const response = await axiosPublic.get(`/api/contests?tag=${searchItem}`);
+  //   setSearchResults(response.data);
+  //   setIsModalOpen(true);
+  // };
 
   return (
     <header
       className="bg-cover bg-center relative flex items-center text-white"
       style={{
         backgroundImage: `url(${banner})`,
-        minHeight: "calc(100vh - 90px)", // Use inline style for calc()
+        minHeight: "calc(100vh - 80px)", // Use inline style for calc()
       }}
     >
       {/* Overlay */}
@@ -31,8 +32,15 @@ const Banner = () => {
           <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg">
               <h1 className="text-3xl font-semibold lg:text-4xl">
-                Welcome To The{" "}
-                <span className="text-blue-400">Contest Hub</span>
+                <Typewriter
+                  words={["Welcome To The Contest Hub"]}
+                  loop={false}
+                  cursor
+                  cursorStyle="_"
+                  typeSpeed={200}
+                  deleteSpeed={30}
+                  delaySpeed={2000}
+                />
               </h1>
 
               <p className="mt-3 text-lg">
@@ -41,7 +49,7 @@ const Banner = () => {
                 contests
               </p>
 
-              <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
+              {/* <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
                 <input
                   type="text"
                   required
@@ -57,7 +65,7 @@ const Banner = () => {
                 >
                   Search
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

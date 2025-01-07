@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import useAuth from "../../../components/hooks/useAuth";
 import { Helmet } from "react-helmet";
+import RingLoader from "react-spinners/RingLoader";
 
 const ContestSubmitted = () => {
   const axiosSecure = useAxiosSecure();
@@ -49,7 +50,9 @@ const ContestSubmitted = () => {
   };
 
   if (contestsLoading) {
-    return <div className="text-center py-6">Loading...</div>;
+    return <div className="flex justify-center items-center h-screen">
+    <RingLoader color="#2563eb" size={100} />
+  </div>;
   }
 
   const handleDeclareWinner = async (userId) => {

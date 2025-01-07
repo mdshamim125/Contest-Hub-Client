@@ -6,12 +6,13 @@ import useAuth from "../../../components/hooks/useAuth";
 import "chart.js/auto";
 import toast from "react-hot-toast";
 import useRole from "../../../components/hooks/useRole";
+import RingLoader from "react-spinners/RingLoader";
 
 const MyProfile = () => {
   const axiosSecure = useAxiosSecure();
   const { user, updateUserProfile } = useAuth();
   const { loggedInUser } = useRole();
-  console.log(loggedInUser);
+  // console.log(loggedInUser);
   const [profileData, setProfileData] = useState({
     displayName: loggedInUser?.displayName || user?.displayName,
     profilePicture: loggedInUser?.photoURL || user?.photoURL,
@@ -61,7 +62,11 @@ const MyProfile = () => {
   };
 
   if (statsLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader color="#2563eb" size={100} />
+      </div>
+    );
   }
 
   return (

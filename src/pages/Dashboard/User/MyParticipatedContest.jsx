@@ -4,12 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import Countdown from "react-countdown";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import useAuth from "../../../components/hooks/useAuth";
+import RingLoader from "react-spinners/RingLoader";
 
 const MyParticipatedContest = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [contests, setContests] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const fetchParticipatedContests = async () => {
     const { data } = await axiosSecure.get(
@@ -31,15 +32,19 @@ const MyParticipatedContest = () => {
 
   if (isLoading) {
     return (
-      <p1>loading...</p1>
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader color="#2563eb" size={100} />
+      </div>
     );
   }
- const handleGoing=()=>{
-    navigate(`/all-contests`)
- }
+  const handleGoing = () => {
+    navigate(`/all-contests`);
+  };
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-semibold mb-6 text-white">My Participated Contests</h1>
+      <h1 className="text-3xl font-semibold mb-6 text-white">
+        My Participated Contests
+      </h1>
       <button className="btn btn-primary mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Sort by Upcoming
       </button>
@@ -82,7 +87,12 @@ const MyParticipatedContest = () => {
           </tbody>
         </table>
       </div>
-      <button onClick={handleGoing}  className="btn bg-blue-500 hover:bg-blue-950 text-white text-center text-large w-full mt-4">Participate More</button>
+      <button
+        onClick={handleGoing}
+        className="btn bg-blue-500 hover:bg-blue-950 text-white text-center text-large w-full mt-4"
+      >
+        Participate More
+      </button>
     </div>
   );
 };
