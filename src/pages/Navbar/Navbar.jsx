@@ -11,8 +11,7 @@ const Navbar = () => {
 
   const handleDropDownProfile = () => setIsOpen(!isOpen);
   const handleDropDownNav = () => setIsOpenNav(!isOpenNav);
-  const handleToggle = (e) => setTheme(e.target.checked ? "dark" : "light");
-
+  const handleToggle = () => setTheme(theme === "dark" ? "light" : "dark");
   useEffect(() => {
     localStorage.setItem("theme", theme);
     document.querySelector("html").setAttribute("data-theme", theme);
@@ -33,6 +32,11 @@ const Navbar = () => {
       <li>
         <NavLink className="mr-3" to="/all-contests">
           All Contests
+        </NavLink>
+      </li>
+      <li>
+        <NavLink className="mr-3" to="/contact-us">
+          Contact Us
         </NavLink>
       </li>
     </>
@@ -75,13 +79,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center">
-          <label className="cursor-pointer flex items-center mr-2">
-            <input
-              type="checkbox"
-              onChange={handleToggle}
-              checked={theme === "dark"}
-              className="toggle"
-            />
+          <div
+            onClick={handleToggle}
+            className="cursor-pointer flex items-center mr-2"
+          >
             {theme === "dark" ? (
               <svg
                 className="w-6 h-6 mx-1 text-white"
@@ -110,7 +111,7 @@ const Navbar = () => {
                 <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
               </svg>
             )}
-          </label>
+          </div>
           <div className="relative z-10">
             <button
               onClick={handleDropDownProfile}

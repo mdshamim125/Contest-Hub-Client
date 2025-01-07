@@ -20,6 +20,7 @@ import Payment from "../../pages/All-Contests/Payment/Payment";
 import { PrivateRoute } from "./PrivateRoute";
 import CreatorRoute from "./CreatorRoute";
 import AdminRoute from "./AdminRoute";
+import Contact from "../../pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "all-contests",
         element: <AllContests></AllContests>,
+      },
+      {
+        path: "contact-us",
+        element: <Contact></Contact>
       },
       {
         path: "/all-contests/:id",

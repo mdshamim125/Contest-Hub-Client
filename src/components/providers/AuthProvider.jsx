@@ -13,6 +13,7 @@ import {
 import { app } from "./firebase/firebase.config";
 import axios from "axios";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import RingLoader from "react-spinners/RingLoader";
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -104,7 +105,15 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {loading ? (
+        <div className="flex justify-center items-center h-screen  bg-gradient-to-r from-blue-900 to-blue-800">
+          <RingLoader color="#2563eb" size={100} />
+        </div>
+      ) : (
+        children
+      )}
+    </AuthContext.Provider>
   );
 };
 

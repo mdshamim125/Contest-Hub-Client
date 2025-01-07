@@ -10,6 +10,8 @@ import { router } from './components/routes/Routes'
 
 const queryClient = new QueryClient()
 
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>

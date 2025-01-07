@@ -16,7 +16,7 @@ const Home = () => {
       <PopularContests></PopularContests>
       <Advertise></Advertise>
       <ContestCreators></ContestCreators>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 };

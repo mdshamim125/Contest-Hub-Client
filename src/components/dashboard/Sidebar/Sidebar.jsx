@@ -18,7 +18,7 @@ const Sidebar = () => {
   return (
     <aside className="flex flex-col w-64 min-h-screen px-5 py-8 overflow-y-auto bg-blue-950 rounded-sm">
       <NavLink to="/">
-        <img className="w-auto h-24 text-white" src={logo} alt="Logo" />
+        <img className="w-auto h-24 text-white bg-white rounded-full"  src={logo} alt="Logo" />
       </NavLink>
 
       <div className="flex flex-col justify-between flex-1 mt-6">
