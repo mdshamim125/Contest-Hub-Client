@@ -8,34 +8,108 @@ const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenNav, setIsOpenNav] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isScrollingUp, setIsScrollingUp] = useState(true);
+  const [atTop, setAtTop] = useState(true);
 
   const handleDropDownProfile = () => setIsOpen(!isOpen);
   const handleDropDownNav = () => setIsOpenNav(!isOpenNav);
   const handleToggle = () => setTheme(theme === "dark" ? "light" : "dark");
+
   useEffect(() => {
     localStorage.setItem("theme", theme);
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY === 0) {
+        setAtTop(true); // At the top, make the navbar transparent
+      } else {
+        setAtTop(false); // Not at the top, apply background color when scrolling up
+      }
+
+      if (currentScrollY > lastScrollY) {
+        setIsScrollingUp(false); // Hides navbar when scrolling down
+      } else {
+        setIsScrollingUp(true); // Shows navbar when scrolling up
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const displayName = user?.displayName || "";
   const photoURL =
     user?.photoURL ||
     "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg";
 
+  // const links = (
+  //   <>
+  //     <li>
+  //       <NavLink className="mr-3" to="/">
+  //         Home
+  //       </NavLink>
+  //     </li>
+  //     <li>
+  //       <NavLink className="mr-3" to="/all-contests">
+  //         All Contests
+  //       </NavLink>
+  //     </li>
+  //     <li>
+  //       <NavLink className="mr-3" to="/contact-us">
+  //         Contact Us
+  //       </NavLink>
+  //     </li>
+  //   </>
+  // );
+
   const links = (
     <>
       <li>
-        <NavLink className="mr-3" to="/">
+        <NavLink
+          className={({ isActive }) =>
+            `mr-8 relative text-lg  py-1  transition duration-300 ${
+              isActive
+                ? "text-blue-500 font-bold after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transform after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+                : "text-white font-semibold hover:text-blue-400 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transform after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
+            }`
+          }
+          to="/"
+        >
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink className="mr-3" to="/all-contests">
+        <NavLink
+          className={({ isActive }) =>
+            `mr-8 relative py-1 text-lg transition duration-300 ${
+              isActive
+                ? "text-blue-500 font-bold after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transform after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+                : "text-white font-semibold hover:text-blue-400 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transform after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
+            }`
+          }
+          to="/all-contests"
+        >
           All Contests
         </NavLink>
       </li>
       <li>
-        <NavLink className="mr-3" to="/contact-us">
+        <NavLink
+          className={({ isActive }) =>
+            `mr-5 relative  py-1 text-lg transition duration-300 ${
+              isActive
+                ? "text-blue-500 font-bold after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transform after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+                : "text-white font-semibold hover:text-blue-400 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-500 after:bottom-0 after:left-0 after:transform after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
+            }`
+          }
+          to="/contact-us"
+        >
           Contact Us
         </NavLink>
       </li>
@@ -43,7 +117,15 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="p-3 z-50 shadow-lg text- white">
+    <nav
+      className={`fixed mx-auto top-0 left-0 w-full py-3 z-50 transition-transform duration-300 ${
+        isScrollingUp ? "translate-y-0" : "-translate-y-full"
+      } ${
+        atTop
+          ? "bg-transparent"
+          : "bg-gradient-to-r from-blue-900 to-blue-800 dark:bg-black"
+      }`}
+    >
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <button
@@ -65,18 +147,16 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          <Link to="/" className="flex items-center ml-3">
+          <Link to="/" className="flex items-center">
             <img
               src={logo}
-              className="w-16 bg-slate-300 rounded-full"
+              className="w-24  rounded-full"
               alt="Logo"
             />
           </Link>
         </div>
         <div className="hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-white  font-semibold">
-            {links}
-          </ul>
+          <ul className="flex px-1 text-white  font-semibold">{links}</ul>
         </div>
         <div className="flex items-center">
           <div
@@ -147,7 +227,7 @@ const Navbar = () => {
       </div>
       {isOpenNav && (
         <div className="lg:hidden">
-          <ul className="menu menu-sm mt-3 z-[1] p-2 shadow rounded-box w-52 text-white font-bold bg-cyan-500">
+          <ul className="mt-3 z-[1] p-2 shadow rounded-box w-40 text-white font-bold bg-cyan-500">
             {links}
           </ul>
         </div>

@@ -25,7 +25,7 @@ const Contact = () => {
     <section className="bg-gray-100">
       {/* Header */}
       <div
-        className="relative bg-cover bg-center bg-fixed h-[400px] flex items-center mb-24"
+        className="relative bg-cover bg-center bg-fixed h-[450px] flex items-center pt-12 mb-24"
         style={{
           backgroundImage:
             "url('https://i.ibb.co/2qLhF8p/pexels-souvenirpixels-1519088.jpg')",

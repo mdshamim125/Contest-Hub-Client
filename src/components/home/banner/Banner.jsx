@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SearchResultsModal from "../../../pages/modals/SearchResultsModal";
-import banner from "../../../../public/contest-banner.jpg";
+import banner from "../../../../public/Designs_04.jpg";
 
 const Banner = () => {
   const axiosPublic = useAxiosPublic();
@@ -21,7 +21,7 @@ const Banner = () => {
       className="bg-cover bg-center relative flex items-center text-white"
       style={{
         backgroundImage: `url(${banner})`,
-        minHeight: "calc(100vh - 80px)", // Use inline style for calc()
+        minHeight: "calc(100vh - 0px)", // Use inline style for calc()
       }}
     >
       {/* Overlay */}

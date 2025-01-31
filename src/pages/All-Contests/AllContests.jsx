@@ -32,7 +32,7 @@ const AllContests = () => {
   if (error) return <p>Error loading contests.</p>;
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container pt-24 mx-auto p-4">
       <Helmet>
         <title>All Contest | Contest Hub</title>
       </Helmet>
