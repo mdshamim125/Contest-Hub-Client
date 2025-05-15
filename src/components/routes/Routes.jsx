@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "contact-us",
-        element: <Contact></Contact>
+        element: <Contact></Contact>,
       },
       {
         path: "/all-contests/:id",
@@ -76,8 +76,122 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: (
-          <div className="text-5xl bg-gradient-to-r from-blue-900 to-blue-800 min-h-screen font-bold flex justify-center items-center">
-            Welcome To Your Dashboard!
+          <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
+            <div className="container px-4 py-4">
+              <div className="max-w-4xl mx-auto text-center">
+                {/* Decorative Elements */}
+                <div className="flex items-center justify-center gap-4 mb-2">
+                  <div className="h-[2px] w-16 bg-gradient-to-r from-transparent to-blue-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div>
+                  <div className="h-[2px] w-16 bg-gradient-to-l from-transparent to-blue-500"></div>
+                </div>
+
+                {/* Welcome Text */}
+                <h1 className="text-4xl md:text-5xl font-bold mb-2">
+                  <span className="bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent">
+                    Welcome to Your Dashboard
+                  </span>
+                </h1>
+
+                {/* Subtitle */}
+                <p className="text-xl text-blue-100/80 mb-4">
+                  Your central hub for managing contests and tracking your
+                  progress
+                </p>
+
+                {/* Quick Stats Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-blue-900/30 backdrop-blur-sm rounded-xl p-4 border border-blue-700/20 hover:border-blue-500/30 transition-all duration-300">
+                    <div className="text-blue-400 text-3xl mb-1">🎯</div>
+                    <h3 className="text-lg font-semibold text-white mb-1">
+                      Active Contests
+                    </h3>
+                    <p className="text-blue-200/80 text-sm">
+                      Manage your ongoing contests
+                    </p>
+                  </div>
+                  <div className="bg-blue-900/30 backdrop-blur-sm rounded-xl p-4 border border-blue-700/20 hover:border-blue-500/30 transition-all duration-300">
+                    <div className="text-blue-400 text-3xl mb-1">📊</div>
+                    <h3 className="text-lg font-semibold text-white mb-1">
+                      Analytics
+                    </h3>
+                    <p className="text-blue-200/80 text-sm">
+                      Track your performance
+                    </p>
+                  </div>
+                  <div className="bg-blue-900/30 backdrop-blur-sm rounded-xl p-4 border border-blue-700/20 hover:border-blue-500/30 transition-all duration-300">
+                    <div className="text-blue-400 text-3xl mb-1">⚡</div>
+                    <h3 className="text-lg font-semibold text-white mb-1">
+                      Quick Actions
+                    </h3>
+                    <p className="text-blue-200/80 text-sm">
+                      Access common tasks
+                    </p>
+                  </div>
+                </div>
+
+                {/* Getting Started Section */}
+                <div className="bg-blue-950/50 rounded-xl p-4 border border-blue-700/20">
+                  <h2 className="text-2xl font-semibold text-white mb-3">
+                    Getting Started
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
+                    <div className="flex items-start space-x-2">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <span className="text-blue-400 text-sm">1</span>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-medium">
+                          Create a Contest
+                        </h3>
+                        <p className="text-blue-200/80 text-sm">
+                          Set up your first contest and invite participants
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <span className="text-blue-400 text-sm">2</span>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-medium">
+                          Manage Submissions
+                        </h3>
+                        <p className="text-blue-200/80 text-sm">
+                          Review and evaluate contest submissions
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <span className="text-blue-400 text-sm">3</span>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-medium">
+                          Track Progress
+                        </h3>
+                        <p className="text-blue-200/80 text-sm">
+                          Monitor contest performance and engagement
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <span className="text-blue-400 text-sm">4</span>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-medium">
+                          Engage Community
+                        </h3>
+                        <p className="text-blue-200/80 text-sm">
+                          Interact with participants and build your community
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         ),
       },

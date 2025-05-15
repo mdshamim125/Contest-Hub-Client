@@ -5,8 +5,9 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import UpdateUserModal from "../../../../pages/modals/UpdateUserModal";
 import UpdateStatusModal from "../../../../pages/modals/UpdateStatusModal";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaUserEdit, FaUserCheck, FaUserTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
+
 const UserDataRow = ({ user, refetch }) => {
   const { user: loggedInUser } = useAuth();
 
@@ -23,7 +24,6 @@ const UserDataRow = ({ user, refetch }) => {
     },
     onSuccess: (data) => {
       refetch();
-      // console.log(data);
       toast.success("User role updated successfully!");
       setIsOpen(false);
     },
@@ -39,7 +39,6 @@ const UserDataRow = ({ user, refetch }) => {
     },
     onSuccess: (data) => {
       refetch();
-      // console.log(data);
       toast.success("User status updated successfully!");
       setIsStatusOpen(false);
     },
@@ -55,7 +54,6 @@ const UserDataRow = ({ user, refetch }) => {
       toast.success("User deleted successfully!");
     },
     onError: (error) => {
-      // console.error(error);
       toast.error("Failed to delete user.");
     },
   });
@@ -74,7 +72,6 @@ const UserDataRow = ({ user, refetch }) => {
     try {
       await mutateAsync(userRole);
     } catch (err) {
-      // console.log(err);
       toast.error(err.message);
     }
   };
@@ -90,10 +87,10 @@ const UserDataRow = ({ user, refetch }) => {
     try {
       await mutateAsync(userStatus);
     } catch (err) {
-      // console.log(err);
       toast.error(err.message);
     }
   };
+
   const handleDelete = async () => {
     if (loggedInUser.email === user.email) {
       toast.error("Action Not Allowed");
@@ -111,95 +108,80 @@ const UserDataRow = ({ user, refetch }) => {
       if (result.isConfirmed) {
         try {
           deleteUser();
-          if (deletedCount > 0) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
-            // toast.success("deleted successfully");
-          }
+          Swal.fire({
+            title: "Deleted!",
+            text: "User has been deleted successfully.",
+            icon: "success",
+          });
         } catch (err) {
-          // console.log(err);
+          toast.error("Failed to delete user.");
         }
       }
     });
   };
-  return (
-    <tr>
-      <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <p className="text-white text-lg whitespace-no-wrap">{user?.email}</p>
-      </td>
-      <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <p className="text-white text-lg whitespace-no-wrap">{user?.role}</p>
-      </td>
-      <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        {user?.status ? (
-          <p
-            className={`${
-              user.status === "Verified" ? "text-green-500" : "text-yellow-500"
-            } whitespace-no-wrap`}
-          >
-            {user.status}
-          </p>
-        ) : (
-          <p className="text-red-500 whitespace-no-wrap">Unavailable</p>
-        )}
-      </td>
 
-      <td className="flex justify-between items-center">
-        <div className="px-5 py-5 border-b border-gray-200 text-sm">
+  return (
+    <tr className="hover:bg-blue-900/10 transition-colors duration-200">
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-white">{user?.email}</div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+          ${user?.role === 'admin' ? 'bg-purple-100 text-purple-800' : 
+            user?.role === 'creator' ? 'bg-blue-100 text-blue-800' : 
+            'bg-green-100 text-green-800'}`}>
+          {user?.role}
+        </span>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+          ${user?.status === 'Verified' ? 'bg-green-100 text-green-800' : 
+            user?.status === 'Blocked' ? 'bg-red-100 text-red-800' : 
+            'bg-yellow-100 text-yellow-800'}`}>
+          {user?.status || 'Unavailable'}
+        </span>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+        <div className="flex items-center justify-center gap-2">
           <button
             onClick={() => setIsOpen(true)}
-            className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+            className="p-2 text-blue-400 hover:text-blue-300 transition-colors"
+            title="Update Role"
           >
-            <span
-              aria-hidden="true"
-              className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-            ></span>
-            <span className="relative">Update Role</span>
+            <FaUserEdit className="w-5 h-5" />
           </button>
-          {/* Update User Modal */}
-          <UpdateUserModal
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            modalHandler={modalHandler}
-            user={user}
-          />
-        </div>
-
-        <div className="px-5 py-5 border-b border-gray-200 text-sm">
           <button
             onClick={() => setIsStatusOpen(true)}
-            className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+            className="p-2 text-green-400 hover:text-green-300 transition-colors"
+            title="Update Status"
           >
-            <span
-              aria-hidden="true"
-              className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-            ></span>
-            <span className="relative">Update Status</span>
+            <FaUserCheck className="w-5 h-5" />
           </button>
-          {/* Update status Modal */}
-          <UpdateStatusModal
-            isOpen={isStatusOpen}
-            setIsOpen={setIsStatusOpen}
-            modalHandler={modalStatusHandler}
-            user={user}
-          />
+          <button
+            onClick={handleDelete}
+            className="p-2 text-red-400 hover:text-red-300 transition-colors"
+            title="Delete User"
+          >
+            <FaTrash className="w-5 h-5" />
+          </button>
         </div>
-        <button
-          onClick={handleDelete}
-          className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-red-900 leading-tight"
-        >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-          ></span>
-          <span className="relative">
-            <FaTrash />
-          </span>
-        </button>
       </td>
+
+      {/* Update User Modal */}
+      <UpdateUserModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        modalHandler={modalHandler}
+        user={user}
+      />
+
+      {/* Update Status Modal */}
+      <UpdateStatusModal
+        isOpen={isStatusOpen}
+        setIsOpen={setIsStatusOpen}
+        modalHandler={modalStatusHandler}
+        user={user}
+      />
     </tr>
   );
 };

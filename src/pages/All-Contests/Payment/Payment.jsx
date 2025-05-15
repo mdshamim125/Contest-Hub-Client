@@ -37,7 +37,7 @@ const Payment = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-medium text-center mt-12 mb-6">
+      <h1 className="text-2xl font-medium text-center pt-24 mb-6">
         Pay For {contest.contestName}
       </h1>
       <Elements stripe={stripePromise}>

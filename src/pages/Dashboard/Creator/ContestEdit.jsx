@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -7,10 +7,10 @@ import { imageUpload } from "../../../api/utils";
 import EditContestForm from "../../../components/form/EditContestForm";
 import useAuth from "../../../components/hooks/useAuth";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
+import RingLoader from "react-spinners/RingLoader";
 
 const ContestEdit = () => {
   const { id } = useParams();
-  // console.log(id);
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(false);
@@ -22,33 +22,41 @@ const ContestEdit = () => {
     key: "selection",
   });
 
+  const [contestName, setContestName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [prizeMoney, setPrizeMoney] = useState("");
+  const [taskSubmission, setTaskSubmission] = useState("");
+  const [selectedTag, setSelectedTag] = useState("Image Design Contests");
+  const [deadline, setDeadline] = useState(new Date());
+  const [imagePreview, setImagePreview] = useState("");
+  const [imageText, setImageText] = useState("Upload Image");
+
   const {
-    data: contest = [],
+    data: contest,
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["contest"],
+    queryKey: ["contest", id],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/contest/${id}`);
-
       return data;
     },
   });
 
-  // console.log(contest);
-
-  const [contestName, setContestName] = useState(`${contest?.contestName}`);
-  const [description, setDescription] = useState(`${contest?.description}`);
-  const [price, setPrice] = useState(`${contest?.price}`);
-  const [prizeMoney, setPrizeMoney] = useState(`${contest?.prizeMoney}`);
-  const [taskSubmission, setTaskSubmission] = useState(
-    `${contest?.taskSubmission}`
-  );
-  const [selectedTag, setSelectedTag] = useState(`${contest?.category}`);
-  const [deadline, setDeadline] = useState(contest?.deadline);
-
-  const [imagePreview, setImagePreview] = useState(`${contest?.image}`);
-  const [imageText, setImageText] = useState("Upload Image");
+  // Update state when contest data is fetched
+  useEffect(() => {
+    if (contest) {
+      setContestName(contest.contestName || "");
+      setDescription(contest.description || "");
+      setPrice(contest.price || "");
+      setPrizeMoney(contest.prizeMoney || "");
+      setTaskSubmission(contest.taskSubmission || "");
+      setSelectedTag(contest.category || "Image Design Contests");
+      setDeadline(new Date(contest.deadline) || new Date());
+      setImagePreview(contest.image || "");
+    }
+  }, [contest]);
 
   const handleDates = (item) => {
     setDates(item.selection);
@@ -73,8 +81,6 @@ const ContestEdit = () => {
     e.preventDefault();
     setLoading(true);
 
-    // console.log("hi");
-
     try {
       const image = e.target.image.files[0];
 
@@ -83,8 +89,6 @@ const ContestEdit = () => {
         image: user?.photoURL,
         email: user?.email,
       };
-
-      // console.log(image, creator);
 
       let image_url = "";
       if (image) {
@@ -100,12 +104,12 @@ const ContestEdit = () => {
         category: selectedTag,
         deadline,
         creator,
-        image: image_url,
+        image: image_url || contest.image, // Keep existing image if no new one is uploaded
         status: "pending",
-        participants: [],
-        participantsCount: 0,
+        participants: contest.participants || [],
+        participantsCount: contest.participantsCount || 0,
       };
-      // console.log(contestData);
+
       await mutateAsync(contestData);
     } catch (err) {
       toast.error(err.message);
@@ -117,6 +121,14 @@ const ContestEdit = () => {
     setImagePreview(URL.createObjectURL(image));
     setImageText(image.name);
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <RingLoader color="#2563eb" size={100} />
+      </div>
+    );
+  }
 
   return (
     <>
