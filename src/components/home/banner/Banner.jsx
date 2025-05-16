@@ -41,7 +41,7 @@ const Banner = () => {
       }}
     >
       {/* Overlay with improved opacity gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/0 to-black/0"></div>
 
       <div className="container relative px-6 py-16 mx-auto">
         <div className="items-center lg:flex">
@@ -120,7 +120,7 @@ const Banner = () => {
               <div className="mt-6">
                 <p className="text-sm text-gray-300">
                   Popular tags:
-                  <span className="inline-flex gap-2 flex-wrap mt-2">
+                  <span className="inline-flex ml-2 gap-2 flex-wrap mt-2">
                     {["Art", "Writing", "Gaming", "Business", "Technology"].map(
                       (tag) => (
                         <button
