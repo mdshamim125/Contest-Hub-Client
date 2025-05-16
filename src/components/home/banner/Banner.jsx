@@ -70,8 +70,8 @@ const Banner = () => {
                 contests
               </p>
 
-              <div className="flex flex-col mt-8 space-y-3 lg:space-y-0 lg:flex-row">
-                <div className="relative w-full lg:max-w-md">
+              <div className="flex flex-col mt-8 space-y-3 md:space-y-0 md:flex-row">
+                <div className="relative w-full md:max-w-md">
                   <input
                     type="text"
                     required
@@ -86,7 +86,7 @@ const Banner = () => {
                 <button
                   onClick={handleSearch}
                   disabled={isLoading}
-                  className="w-full px-6 py-3 text-sm font-medium tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-r-md lg:w-auto hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-blue-400 disabled:cursor-not-allowed"
+                  className="w-full px-6 py-3 text-sm font-medium tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-r-md md:w-auto hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-blue-400 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center">
