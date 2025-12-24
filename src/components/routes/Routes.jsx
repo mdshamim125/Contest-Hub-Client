@@ -21,6 +21,7 @@ import { PrivateRoute } from "./PrivateRoute";
 import CreatorRoute from "./CreatorRoute";
 import AdminRoute from "./AdminRoute";
 import Contact from "../../pages/Contact/Contact";
+import AboutUs from "../../pages/About/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "contact-us",
         element: <Contact></Contact>,
+      },
+      {
+        path: "about-us",
+        element: <AboutUs />,
       },
       {
         path: "/all-contests/:id",

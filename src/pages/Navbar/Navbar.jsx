@@ -169,7 +169,7 @@ const Navbar = () => {
           : "bg-gradient-to-r from-blue-900/95 to-blue-800/95 dark:bg-black/90 shadow-lg shadow-black/10"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-4 py-2">
+      <div className="container mx-auto flex items-center justify-between px-4">
         <div className="flex items-center">
           <div className="mobile-nav-container relative">
             <button
@@ -280,11 +280,11 @@ const Navbar = () => {
               <div className="overflow-hidden flex items-center justify-center">
                 <img
                   src={logo}
-                  className="w-12 h-12 object-contain transition-transform hover:scale-105 duration-300"
+                  className="w-16 h-16 object-contain transition-transform hover:scale-105 duration-300"
                   alt="Contest Hub Logo"
                 />
               </div>
-              <span className="ml-2 text-lg font-bold text-white hidden sm:block">
+              <span className="text-lg font-bold text-white hidden sm:block">
                 Contest<span className="text-blue-400">Hub</span>
               </span>
             </div>
@@ -332,43 +332,49 @@ const Navbar = () => {
             <button
               onClick={handleDropDownProfile}
               className="btn btn-ghost p-0 btn-circle avatar overflow-hidden border-2 border-transparent hover:border-blue-400 transition-all"
-              aria-label="Profile menu"
+              aria-label="Open profile menu"
             >
               <img
-                src={photoURL}
-                className="w-8 h-8 rounded-full object-cover"
+                src={photoURL || "/default-avatar.png"}
                 alt={displayName || "User avatar"}
+                className="w-8 h-8 rounded-full object-cover"
               />
             </button>
+
             {isOpen && (
               <div className="absolute right-0 mt-3 origin-top-right animate-slideDown">
-                <ul className="p-3 shadow-lg menu dropdown-content bg-gradient-to-b from-blue-900 to-blue-800 dark:bg-black/95 rounded-lg w-60 border border-white/10 backdrop-blur-md text-white">
+                <ul className="w-60 p-3 bg-gradient-to-b from-blue-900 to-blue-800 dark:bg-black/95 text-white rounded-lg border border-white/10 shadow-lg backdrop-blur-md menu">
+                  {/* User Info */}
                   <li className="mb-2 border-b border-white/10 pb-2">
                     <div className="flex items-center gap-3 px-3 py-2">
                       <img
-                        src={photoURL}
+                        src={photoURL || "/default-avatar.png"}
+                        alt={displayName || "Guest"}
                         className="w-10 h-10 rounded-full"
-                        alt={displayName}
                       />
-                      <div>
+                      <div className="flex flex-col">
                         <p className="font-medium">{displayName || "Guest"}</p>
                         {user?.email && (
-                          <p className="text-xs opacity-75">{user.email}</p>
+                          <p className="text-xs opacity-75 truncate">
+                            {user.email}
+                          </p>
                         )}
                       </div>
                     </div>
                   </li>
+
+                  {/* Dashboard Link */}
                   {user && (
                     <li>
                       <Link
                         to="/dashboard"
-                        className="flex items-center gap-2 px-3 py-2 hover:bg-white/10 rounded-md transition-colors"
+                        className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-white/10 transition-colors"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-5 w-5"
-                          viewBox="0 0 20 20"
                           fill="currentColor"
+                          viewBox="0 0 20 20"
                         >
                           <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z" />
                           <path d="M3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6z" />
@@ -378,22 +384,24 @@ const Navbar = () => {
                       </Link>
                     </li>
                   )}
+
+                  {/* Login / Logout */}
                   <li className="mt-2">
                     {user ? (
                       <button
                         onClick={logOut}
-                        className="flex items-center gap-2 px-3 py-2 text-red-300 hover:bg-red-500/20 rounded-md transition-colors w-full text-left"
+                        className="flex items-center gap-2 w-full px-3 py-2 text-red-300 rounded-md hover:bg-red-500/20 transition-colors text-left"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-5 w-5"
-                          viewBox="0 0 20 20"
                           fill="currentColor"
+                          viewBox="0 0 20 20"
                         >
                           <path
                             fillRule="evenodd"
-                            d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1H3zm9 3a1 1 0 10-2 0v4a1 1 0 102 0V6zm2 5a1 1 0 01-1 1h-4a1 1 0 110-2h4a1 1 0 011 1z"
                             clipRule="evenodd"
+                            d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1H3zm9 3a1 1 0 10-2 0v4a1 1 0 102 0V6zm2 5a1 1 0 01-1 1h-4a1 1 0 110-2h4a1 1 0 011 1z"
                           />
                         </svg>
                         Logout
@@ -401,18 +409,18 @@ const Navbar = () => {
                     ) : (
                       <Link
                         to="/login"
-                        className="flex items-center gap-2 px-3 py-2 text-blue-300 hover:bg-blue-500/20 rounded-md transition-colors"
+                        className="flex items-center gap-2 w-full px-3 py-2 text-blue-300 rounded-md hover:bg-blue-500/20 transition-colors"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-5 w-5"
-                          viewBox="0 0 20 20"
                           fill="currentColor"
+                          viewBox="0 0 20 20"
                         >
                           <path
                             fillRule="evenodd"
-                            d="M3 3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm9 1a1 1 0 00-2 0v5a1 1 0 002 0V4zm-2 7a1 1 0 112 0v5a1 1 0 11-2 0v-5z"
                             clipRule="evenodd"
+                            d="M3 3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm9 1a1 1 0 00-2 0v5a1 1 0 002 0V4zm-2 7a1 1 0 112 0v5a1 1 0 11-2 0v-5z"
                           />
                         </svg>
                         Login
