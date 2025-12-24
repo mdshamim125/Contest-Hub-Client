@@ -110,6 +110,22 @@ const Navbar = () => {
           All Contests
         </NavLink>
       </li>
+
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            `mr-8 relative text-lg py-1 transition duration-300 ${
+              isActive
+                ? "text-blue-400 font-bold after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-400 after:bottom-0 after:left-0 after:transform after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+                : "text-white font-semibold hover:text-blue-300 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-400 after:bottom-0 after:left-0 after:transform after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
+            }`
+          }
+          to="/about-us"
+        >
+          About Us
+        </NavLink>
+      </li>
+
       <li>
         <NavLink
           className={({ isActive }) =>
@@ -124,6 +140,22 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
+      {!user && (
+        <li>
+          <NavLink
+            className={({ isActive }) =>
+              `mr-8 relative text-lg py-1 transition duration-300 ${
+                isActive
+                  ? "text-blue-400 font-bold after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-400 after:bottom-0 after:left-0 after:transform after:scale-x-100 after:transition-transform after:duration-300 after:origin-left"
+                  : "text-white font-semibold hover:text-blue-300 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-blue-400 after:bottom-0 after:left-0 after:transform after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
+              }`
+            }
+            to="/login"
+          >
+            Login
+          </NavLink>
+        </li>
+      )}
     </>
   );
 
@@ -137,33 +169,33 @@ const Navbar = () => {
           : "bg-gradient-to-r from-blue-900/95 to-blue-800/95 dark:bg-black/90 shadow-lg shadow-black/10"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-4">
+      <div className="container mx-auto flex items-center justify-between px-4 py-2">
         <div className="flex items-center">
           <div className="mobile-nav-container relative">
-          <button
-            onClick={handleDropDownNav}
+            <button
+              onClick={handleDropDownNav}
               className="btn btn-ghost rounded-full p-1 lg:hidden hover:bg-white/10 transition-colors"
               aria-label="Toggle navigation menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-white"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              fill="none"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-white"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                fill="none"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d={
                     isOpenNav
                       ? "M6 18L18 6M6 6l12 12"
                       : "M4 6h16M4 12h8m-8 6h16"
                   }
-              />
-            </svg>
-          </button>
+                />
+              </svg>
+            </button>
 
             {isOpenNav && (
               <div className="lg:hidden absolute left-0 top-12 mobile-nav-container">
@@ -246,11 +278,11 @@ const Navbar = () => {
           <Link to="/" className="flex items-center pl-1">
             <div className="flex items-center">
               <div className="overflow-hidden flex items-center justify-center">
-            <img
-              src={logo}
+                <img
+                  src={logo}
                   className="w-12 h-12 object-contain transition-transform hover:scale-105 duration-300"
                   alt="Contest Hub Logo"
-            />
+                />
               </div>
               <span className="ml-2 text-lg font-bold text-white hidden sm:block">
                 Contest<span className="text-blue-400">Hub</span>
@@ -325,9 +357,9 @@ const Navbar = () => {
                         )}
                       </div>
                     </div>
-                </li>
-                {user && (
-                  <li>
+                  </li>
+                  {user && (
+                    <li>
                       <Link
                         to="/dashboard"
                         className="flex items-center gap-2 px-3 py-2 hover:bg-white/10 rounded-md transition-colors"
@@ -344,10 +376,10 @@ const Navbar = () => {
                         </svg>
                         Dashboard
                       </Link>
-                  </li>
-                )}
+                    </li>
+                  )}
                   <li className="mt-2">
-                  {user ? (
+                    {user ? (
                       <button
                         onClick={logOut}
                         className="flex items-center gap-2 px-3 py-2 text-red-300 hover:bg-red-500/20 rounded-md transition-colors w-full text-left"
@@ -385,9 +417,9 @@ const Navbar = () => {
                         </svg>
                         Login
                       </Link>
-                  )}
-                </li>
-              </ul>
+                    )}
+                  </li>
+                </ul>
               </div>
             )}
           </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Bar } from "react-chartjs-2";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import useAuth from "../../../components/hooks/useAuth";
@@ -12,138 +12,150 @@ const MyProfile = () => {
   const axiosSecure = useAxiosSecure();
   const { user, updateUserProfile } = useAuth();
   const { loggedInUser } = useRole();
-  // console.log(loggedInUser);
+
   const [profileData, setProfileData] = useState({
     displayName: loggedInUser?.displayName || user?.displayName,
     profilePicture: loggedInUser?.photoURL || user?.photoURL,
-    address: loggedInUser?.address,
+    address: loggedInUser?.address || "",
   });
+
   const [winPercentage, setWinPercentage] = useState(0);
 
-  const fetchProfileStats = async () => {
-    const { data } = await axiosSecure.get(
-      `/users/${loggedInUser?.email}/stats`
-    );
-    return data;
-  };
-
-  const { data: stats, isLoading: statsLoading } = useQuery({
+  const { data: stats, isLoading } = useQuery({
     queryKey: ["profileStats"],
-    queryFn: fetchProfileStats,
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(
+        `/users/${loggedInUser?.email}/stats`
+      );
+      return data;
+    },
   });
-
-  const updateProfile = async (updatedData) => {
-    const { data } = await axiosSecure.put(
-      `/users/${loggedInUser?.email}`,
-      updatedData
-    );
-    await updateUserProfile(loggedInUser?.displayName, loggedInUser?.photoURL);
-    toast.success("User's information updated successfully");
-    return data;
-  };
 
   useEffect(() => {
     if (stats) {
-      const totalContests = stats.attempted + stats.completed;
-      const winPct =
-        totalContests > 0 ? (stats.completed / totalContests) * 100 : 0;
-      setWinPercentage(winPct.toFixed(2));
+      const total = stats.attempted + stats.completed;
+      const percentage = total ? (stats.completed / total) * 100 : 0;
+      setWinPercentage(percentage.toFixed(2));
     }
   }, [stats]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setProfileData({ ...profileData, [name]: value });
+  const handleChange = (e) => {
+    setProfileData({ ...profileData, [e.target.name]: e.target.value });
   };
 
-  const handleProfileUpdate = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    await updateProfile(profileData);
+    await axiosSecure.put(`/users/${loggedInUser?.email}`, profileData);
+    await updateUserProfile(
+      profileData.displayName,
+      profileData.profilePicture
+    );
+    toast.success("Profile updated successfully");
   };
 
-  if (statsLoading) {
+  if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <RingLoader color="#2563eb" size={100} />
+      <div className="flex justify-center items-center min-h-[60vh]">
+        <RingLoader color="#2563eb" size={80} />
       </div>
     );
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">My Profile</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <div className="space-y-8 text-white">
+      {/* Header */}
+      <div className="flex items-center gap-6 bg-blue-950/30 border border-blue-800/30 p-6 rounded-xl">
+        <img
+          src={profileData.profilePicture}
+          alt="Profile"
+          className="w-24 h-24 rounded-full border-4 border-blue-600 object-cover"
+        />
         <div>
-          <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
-          <form
-            onSubmit={handleProfileUpdate}
-            className="p-6 bg-white border rounded-lg shadow-md"
-          >
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Display Name
-              </label>
+          <h1 className="text-2xl font-bold">{profileData.displayName}</h1>
+          <p className="text-sm text-blue-200">{loggedInUser?.email}</p>
+          <p className="text-sm text-gray-300 mt-1">
+            {profileData.address || "No address added"}
+          </p>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Profile Form */}
+        <div className="bg-blue-950/20 border border-blue-800/30 rounded-xl p-6">
+          <h2 className="text-xl font-semibold mb-6">Edit Profile</h2>
+
+          <form onSubmit={handleUpdate} className="space-y-4">
+            <div>
+              <label className="block text-sm mb-1">Display Name</label>
               <input
-                type="text"
                 name="displayName"
                 value={profileData.displayName}
-                onChange={handleInputChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-slate-900 border border-blue-800 focus:ring-2 focus:ring-blue-600 outline-none"
               />
             </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Profile Picture URL
-              </label>
+
+            <div>
+              <label className="block text-sm mb-1">Profile Picture URL</label>
               <input
-                type="text"
                 name="profilePicture"
                 value={profileData.profilePicture}
-                onChange={handleInputChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-slate-900 border border-blue-800 focus:ring-2 focus:ring-blue-600 outline-none"
               />
             </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Address
-              </label>
+
+            <div>
+              <label className="block text-sm mb-1">Address</label>
               <input
-                type="text"
                 name="address"
                 value={profileData.address}
-                onChange={handleInputChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg bg-slate-900 border border-blue-800 focus:ring-2 focus:ring-blue-600 outline-none"
               />
             </div>
+
             <button
               type="submit"
-              className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              className="mt-4 bg-blue-600 hover:bg-blue-700 transition px-6 py-2 rounded-lg font-medium"
             >
-              Update Profile
+              Save Changes
             </button>
           </form>
         </div>
-        <div className="p-6 bg-white border rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Win Percentage</h2>
+
+        {/* Stats */}
+        <div className="bg-blue-950/20 border border-blue-800/30 rounded-xl p-6">
+          <h2 className="text-xl font-semibold mb-4">Contest Performance</h2>
+
+          <div className="mb-4">
+            <p className="text-sm text-gray-300">Win Percentage</p>
+            <p className="text-3xl font-bold text-blue-400">{winPercentage}%</p>
+          </div>
+
           <Bar
             data={{
-              labels: ["Win Percentage"],
+              labels: ["Win %"],
               datasets: [
                 {
-                  label: "Win %",
+                  label: "Win Rate",
                   data: [winPercentage],
-                  backgroundColor: "rgba(54, 162, 235, 0.2)",
-                  borderColor: "rgba(54, 162, 235, 1)",
-                  borderWidth: 1,
+                  backgroundColor: "rgba(37, 99, 235, 0.5)",
+                  borderRadius: 6,
                 },
               ],
             }}
             options={{
+              responsive: true,
               scales: {
                 y: {
                   beginAtZero: true,
                   max: 100,
                 },
+              },
+              plugins: {
+                legend: { display: false },
               },
             }}
           />
