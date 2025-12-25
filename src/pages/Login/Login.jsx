@@ -43,6 +43,39 @@ const Login = () => {
     }
   };
 
+  const handleDemoLogin = async (role) => {
+    try {
+      let credentials = {};
+
+      if (role === "user") {
+        credentials = {
+          email: "cse12005038brur@gmail.com",
+          password: "123qaz!Q",
+        };
+      }
+
+      if (role === "creator") {
+        credentials = {
+          email: "mdsr9510@gmail.com",
+          password: "123qaz!Q",
+        };
+      }
+
+      if (role === "admin") {
+        credentials = {
+          email: "admin@gmail.com",
+          password: "123qaz!Q",
+        };
+      }
+
+      await signIn(credentials.email, credentials.password);
+      toast.success(`Logged in as Demo ${role.toUpperCase()}`);
+      navigate(from, { replace: true });
+    } catch (error) {
+      toast.error("Demo login failed");
+    }
+  };
+
   if (user) return null;
 
   return (
@@ -78,6 +111,39 @@ const Login = () => {
             </svg>
             Sign in with Google
           </button>
+
+          {/* ================= DEMO LOGIN SECTION ================= */}
+          <div className="mb-6">
+            <p className="text-center text-gray-400 text-sm mb-3">
+              Quick Demo Access
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("user")}
+                className="py-2 rounded-lg bg-blue-500/20 border border-blue-400 text-blue-300 hover:bg-blue-500/30 transition text-sm font-semibold"
+              >
+                👤 Demo User
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("creator")}
+                className="py-2 rounded-lg bg-purple-500/20 border border-purple-400 text-purple-300 hover:bg-purple-500/30 transition text-sm font-semibold"
+              >
+                ✍️ Demo Creator
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("admin")}
+                className="py-2 rounded-lg bg-red-500/20 border border-red-400 text-red-300 hover:bg-red-500/30 transition text-sm font-semibold"
+              >
+                🛡️ Demo Admin
+              </button>
+            </div>
+          </div>
 
           {/* Divider */}
           <div className="flex items-center my-4">

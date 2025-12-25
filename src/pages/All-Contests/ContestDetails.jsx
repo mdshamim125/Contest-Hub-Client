@@ -320,9 +320,8 @@ const ContestDetails = () => {
                   <div>
                     <p className="text-gray-400 text-sm">Winner</p>
                     <p className="text-white">
-                      {contest.winner?.name
-                        ? contest.winner.name
-                        : "Not announced yet"}
+                      {contest.participants?.find((p) => p.isWinner)
+                        ?.userName || "Not announced yet"}
                     </p>
                   </div>
                 </li>
