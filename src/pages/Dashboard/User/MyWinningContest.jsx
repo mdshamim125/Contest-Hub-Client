@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
 import useAuth from "../../../components/hooks/useAuth";
 import RingLoader from "react-spinners/RingLoader";
+import { FaTrophy, FaExternalLinkAlt } from "react-icons/fa";
 
 const MyWinningContest = () => {
   const axiosSecure = useAxiosSecure();
@@ -17,9 +17,10 @@ const MyWinningContest = () => {
     return data;
   };
 
-  const { data, isLoading, refetch } = useQuery({
-    queryKey: ["wonContests"],
+  const { data, isLoading } = useQuery({
+    queryKey: ["wonContests", user?.email],
     queryFn: fetchWonContests,
+    enabled: !!user?.email,
   });
 
   useEffect(() => {
@@ -30,77 +31,95 @@ const MyWinningContest = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <RingLoader color="#2563eb" size={100} />
+      <div className="flex justify-center items-center h-[70vh]">
+        <RingLoader color="#2563eb" size={80} />
       </div>
     );
   }
-  const handleGo = () => {
-    navigate(`/all-contests/`);
-  };
 
   return (
-    <div className="p-4">
-      <h1 className="text-3xl md:text-4xl font-extrabold mb-6 text-blue-700 drop-shadow-sm">
-        My Winning Contests
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <section className="min-h-screen px-4 md:px-8 py-10 bg-gradient-to-br from-slate-900 to-slate-800">
+      {/* ================= HEADER ================= */}
+      <div className="max-w-7xl mx-auto mb-10">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-2">
+          🏆 My Winning Contests
+        </h1>
+        <p className="text-gray-400 max-w-2xl">
+          View all the contests you’ve won, access your winning submissions, and
+          celebrate your achievements.
+        </p>
+      </div>
+
+      {/* ================= CONTENT ================= */}
+      <div className="max-w-7xl mx-auto">
         {wonContests.length > 0 ? (
-          wonContests.map((contest) => (
-            <div
-              key={contest._id}
-              className="p-6 bg-white border rounded-lg shadow-md"
-            >
-              <h2 className="text-xl font-semibold mb-2">
-                {contest.contestName}
-              </h2>
-              <p className="text-gray-600 mb-4">Prize: {contest.prize}</p>
-              <p className="text-gray-600 mb-4">
-                Winning Submission:{" "}
-                <a
-                  href={
-                    contest.submissions.find((sub) => sub.isWinner)?.taskLink
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 underline"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {wonContests.map((contest) => {
+              const winningSubmission = contest.submissions?.find(
+                (sub) => sub.isWinner
+              );
+
+              return (
+                <div
+                  key={contest._id}
+                  className="relative bg-white/10 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  View Submission
-                </a>
-              </p>
-              <Link
-                to={`/contests/${contest._id}`}
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-              >
-                View Contest Details
-              </Link>
-            </div>
-          ))
+                  {/* Trophy Icon */}
+                  <div className="absolute top-4 right-4 text-yellow-400">
+                    <FaTrophy size={22} />
+                  </div>
+
+                  <h2 className="text-xl font-semibold text-white mb-2">
+                    {contest.contestName}
+                  </h2>
+
+                  <p className="text-gray-300 mb-4">
+                    <span className="font-medium text-white">Prize:</span>{" "}
+                    {contest.prize}
+                  </p>
+
+                  {winningSubmission && (
+                    <a
+                      href={winningSubmission.taskLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-4"
+                    >
+                      View Winning Submission
+                      <FaExternalLinkAlt size={14} />
+                    </a>
+                  )}
+
+                  <Link
+                    to={`/contests/${contest._id}`}
+                    className="block mt-4 text-center px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+                  >
+                    View Contest Details
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         ) : (
+          /* ================= EMPTY STATE ================= */
           <div className="flex justify-center items-center min-h-[60vh]">
-            <div className="bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg px-8 py-10 max-w-md w-full text-center">
-              <div className="flex justify-center mb-4">
-                {/* Trophy Icon */}
-                <svg
-                  className="w-10 h-10 text-yellow-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M9 2a1 1 0 012 0v1h3a1 1 0 011 1v2a5 5 0 01-4 4.9V13h2a1 1 0 110 2H7a1 1 0 110-2h2V8.9A5 5 0 015 6V4a1 1 0 011-1h3V2z" />
-                </svg>
+            <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl px-8 py-10 max-w-md w-full text-center">
+              <div className="flex justify-center mb-4 text-yellow-400">
+                <FaTrophy size={40} />
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">
+
+              <h3 className="text-2xl font-bold text-white mb-2">
                 No Winning Contests Yet
               </h3>
-              <p className="text-gray-600 mb-6">
-                Keep participating in contests to showcase your skills and win
-                exciting prizes.
-                <br />
-                Your next victory could be just around the corner!
+
+              <p className="text-gray-300 mb-6">
+                Participate in contests, showcase your talent, and your next win
+                could be just around the corner!
               </p>
+
               <button
-                onClick={handleGo}
-                className="btn btn-primary w-full max-w-xs mx-auto"
+                onClick={() => navigate("/all-contests")}
+                className="w-full px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
               >
                 Explore Contests
               </button>
@@ -108,7 +127,7 @@ const MyWinningContest = () => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
