@@ -22,6 +22,7 @@ import CreatorRoute from "./CreatorRoute";
 import AdminRoute from "./AdminRoute";
 import Contact from "../../pages/Contact/Contact";
 import AboutUs from "../../pages/About/AboutUs";
+import AdminDashboard from "../../pages/Dashboard/Admin/AdminDashboard";
 
 export const router = createBrowserRouter([
   {
@@ -267,6 +268,16 @@ export const router = createBrowserRouter([
         ),
       },
       // admin path
+      {
+        path: "admin-analytics",
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "manage-user",
         element: (

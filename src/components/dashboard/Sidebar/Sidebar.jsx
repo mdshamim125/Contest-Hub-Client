@@ -225,6 +225,31 @@ const Sidebar = () => {
             {/* Admin Navigation */}
             {endUser === "admin" && (
               <>
+                {/* Admin Analytics */}
+                <NavLink
+                  to="admin-analytics"
+                  className={getNavLinkClass}
+                  onClick={() => setIsSidebarOpen(false)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 3v18h18M9 17V9m4 8V5m4 12v-6"
+                    />
+                  </svg>
+                  <span className="ml-3 text-sm font-medium">
+                    Admin Analytics
+                  </span>
+                </NavLink>
+                {/* Manage Users */}
                 <NavLink
                   to="manage-user"
                   className={getNavLinkClass}
@@ -247,6 +272,7 @@ const Sidebar = () => {
                   <span className="ml-3 text-sm font-medium">Manage Users</span>
                 </NavLink>
 
+                {/* Manage Contests */}
                 <NavLink
                   to="manage-contests"
                   className={getNavLinkClass}

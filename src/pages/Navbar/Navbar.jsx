@@ -166,7 +166,7 @@ const Navbar = () => {
       } ${
         atTop
           ? "bg-black/30 shadow-none"
-          : "bg-gradient-to-r from-blue-900/95 to-blue-800/95 dark:bg-black/90 shadow-lg shadow-black/10"
+          : "bg-gradient-to-b from-blue-950/90 to-slate-900/90 shadow-lg shadow-black/10"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-4">
@@ -348,7 +348,10 @@ const Navbar = () => {
                   <li className="mb-2 border-b border-white/10 pb-2">
                     <div className="flex items-center gap-3 px-3 py-2">
                       <img
-                        src={photoURL || "/default-avatar.png"}
+                        src={
+                          photoURL ||
+                          "https://cdn-icons-png.freepik.com/512/185/185527.png"
+                        }
                         alt={displayName || "Guest"}
                         className="w-10 h-10 rounded-full"
                       />
